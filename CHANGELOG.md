@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/yeldiRium/gen-z/compare/v1.0.2...v1.0.3) (2020-02-14)
+
+
+### Bug Fixes
+
+* Configure semantic release to actually commit the api docs. ([6e4f2aa](https://github.com/yeldiRium/gen-z/commit/6e4f2aa52efd2b3c53d160d5508047322b70f3af))
+
 ## [1.0.2](https://github.com/yeldiRium/gen-z/compare/v1.0.1...v1.0.2) (2020-02-14)
 
 

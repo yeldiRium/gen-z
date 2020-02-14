@@ -1,9 +1,5 @@
-const tail = function*(gen) {
-  gen.next();
+const drop = require("./drop");
 
-  for (const element of gen) {
-    yield element;
-  }
-};
+const tail = drop(1);
 
 module.exports = tail;

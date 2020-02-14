@@ -13,6 +13,7 @@ const reduce = require("./collect/reduce");
 const tail = require("./remove/tail");
 const take = require("./remove/take");
 const takeWhile = require("./remove/takeWhile");
+const zip = require("./transform/zip");
 
 module.exports = {
   collect,
@@ -29,5 +30,6 @@ module.exports = {
   reduce,
   tail,
   take,
-  takeWhile
+  takeWhile,
+  zip
 };

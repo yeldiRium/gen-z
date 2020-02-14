@@ -22,7 +22,7 @@
     "test:watch": "jest --watch",
     "test:lint": "eslint \"**/*.js\"",
     "test:lint:fix": "eslint --fix \"**/*.js\"",
-    "docs": "jsdoc2md src/**/*.js > api.md"
+    "docs": "jsdoc2md src/**/*.js > API.md"
   },
   "dependencies": {},
   "devDependencies": {

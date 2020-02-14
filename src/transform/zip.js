@@ -1,5 +1,13 @@
 const curry = require("../internal/curry");
 
+/**
+ * Zips the elements from `gen1` and `gen2` together.
+ *
+ * @param {Generator} gen1
+ * @param {Generator} gen2
+ * @generator
+ * @yields {[any, any]}
+ */
 const zip = function*(gen1, gen2) {
   while (true) {
     const next1 = gen1.next();

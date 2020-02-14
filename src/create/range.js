@@ -1,5 +1,14 @@
 const inRange = require("../internal/inRange");
 
+/**
+ * Generates values from `start` to `stop` in steps of length `step`.
+ *
+ * @param {number} start
+ * @param {number} stop
+ * @param {number} step
+ * @generator
+ * @yields {number}
+ */
 const range = (start, stop, step = 1) => {
   if (step === 0) {
     throw new Error("Step must not be zero.");

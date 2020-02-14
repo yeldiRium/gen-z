@@ -1,3 +1,10 @@
+/**
+ * Cycles infinitely through the given `values`.
+ *
+ * @param {*[]} values
+ * @generator
+ * @yields {any}
+ */
 const cycle = values => {
   if (values.length === 0) {
     throw new Error("Cannot cycle through empty array.");

@@ -7,8 +7,9 @@ const dropWhile = require("./remove/dropWhile");
 const filter = require("./remove/filter");
 const head = require("./remove/head");
 const iterate = require("./create/iterate");
-const map = require('./transform/map');
+const map = require("./transform/map");
 const range = require("./create/range");
+const reduce = require("./collect/reduce");
 const tail = require("./remove/tail");
 const take = require("./remove/take");
 const takeWhile = require("./remove/takeWhile");
@@ -25,6 +26,7 @@ module.exports = {
   iterate,
   map,
   range,
+  reduce,
   tail,
   take,
   takeWhile

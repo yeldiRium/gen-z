@@ -1,6 +1,6 @@
 const collect = require("../collect/collect");
 const cycle = require("./cycle");
-const take = require("../cut/take");
+const take = require("../remove/take");
 
 describe("cycle", () => {
   it("cycles infinitely through a list of values", () => {

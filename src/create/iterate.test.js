@@ -1,6 +1,6 @@
 const collect = require("../collect/collect");
 const iterate = require("./iterate");
-const take = require("../cut/take");
+const take = require("../remove/take");
 
 describe("iterate", () => {
   it("generates infinite values by applying a function repeatedly", () => {

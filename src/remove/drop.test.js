@@ -1,5 +1,5 @@
 const collect = require("../collect/collect");
-const drop = require("../cut/drop");
+const drop = require(".//drop");
 const range = require("../create/range");
 
 describe("drop", () => {

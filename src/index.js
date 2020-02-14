@@ -10,6 +10,7 @@ const iterate = require("./create/iterate");
 const map = require("./transform/map");
 const range = require("./create/range");
 const reduce = require("./collect/reduce");
+const repeat = require("./create/repeat");
 const tail = require("./remove/tail");
 const take = require("./remove/take");
 const takeWhile = require("./remove/takeWhile");
@@ -27,6 +28,7 @@ module.exports = {
   iterate,
   map,
   range,
+  repeat,
   reduce,
   tail,
   take,

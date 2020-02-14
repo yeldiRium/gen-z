@@ -21,17 +21,20 @@
     "test:jest": "jest",
     "test:watch": "jest --watch",
     "test:lint": "eslint \"**/*.js\"",
-    "test:lint:fix": "eslint --fix \"**/*.js\""
+    "test:lint:fix": "eslint --fix \"**/*.js\"",
+    "docs": "jsdoc2md src/**/*.js > api.md"
   },
   "dependencies": {},
   "devDependencies": {
     "@semantic-release/changelog": "5.0.0",
+    "@semantic-release/exec": "5.0.0",
     "@semantic-release/git": "9.0.0",
     "eslint": "6.8.0",
     "eslint-config-prettier": "6.10.0",
     "eslint-plugin-jest": "23.6.0",
     "eslint-plugin-prettier": "3.1.2",
     "jest": "25.1.0",
+    "jsdoc-to-markdown": "5.0.3",
     "prettier": "1.19.1",
     "semantic-release": "17.0.2"
   }

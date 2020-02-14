@@ -3,7 +3,7 @@ const drop = require(".//drop");
 const range = require("../create/range");
 
 describe("drop", () => {
-  it("drops amount of elements from the generator", () => {
+  it("drops count of elements from the generator", () => {
     const gen = range(10);
 
     const cutGen = drop(5, gen);

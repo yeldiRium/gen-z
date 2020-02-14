@@ -3,9 +3,11 @@ const inRange = require("../internal/inRange");
 /**
  * Generates values from `start` to `stop` in steps of length `step`.
  *
+ * If only `start` is given, it is treated as `stop` and `start = 0` is assumed.
+ *
  * @param {number} start
- * @param {number} stop
- * @param {number} step
+ * @param {number} [stop]
+ * @param {number} [step]
  * @generator
  * @yields {number}
  */

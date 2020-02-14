@@ -6,7 +6,7 @@ const curry = require("../internal/curry");
  * @param {Generator} gen1
  * @param {Generator} gen2
  * @generator
- * @yields {[any, any]}
+ * @yields {any[]} - of the form [elem1, elem2] where elem1 is from gen1 and elem2 ist from gen2
  */
 const zip = function*(gen1, gen2) {
   while (true) {

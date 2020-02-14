@@ -1,7 +1,7 @@
 /**
  * Cycles infinitely through the given `values`.
  *
- * @param {*[]} values
+ * @param {any[]} values
  * @generator
  * @yields {any}
  */

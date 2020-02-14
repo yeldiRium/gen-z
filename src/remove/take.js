@@ -1,15 +1,15 @@
 const curry = require("../internal/curry");
 
 /**
- * Take the first `amount` elements of `gen`.
+ * Take the first `count` elements of `gen`.
  *
- * @param {number} amount
+ * @param {number} count
  * @param {Generator} gen
  * @generator
  * @yields {any}
  */
-const take = function*(amount, gen) {
-  for (let i = 0; i < amount; i++) {
+const take = function*(count, gen) {
+  for (let i = 0; i < count; i++) {
     const next = gen.next();
 
     if (next.done) {

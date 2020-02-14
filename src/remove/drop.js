@@ -1,15 +1,15 @@
 const curry = require("../internal/curry");
 
 /**
- * Drop the first `amount` elements from `gen`.
+ * Drop the first `count` elements from `gen`.
  *
- * @param {number} amount
+ * @param {number} count
  * @param {Generator} gen
  * @generator
  * @yields {any}
  */
-const drop = function*(amount, gen) {
-  for (let i = 0; i < amount; i++) {
+const drop = function*(count, gen) {
+  for (let i = 0; i < count; i++) {
     gen.next();
   }
 

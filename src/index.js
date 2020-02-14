@@ -1,3 +1,4 @@
+const async = require("./async");
 const chain = require("./transform/chain");
 const concat = require("./create/concat");
 const collect = require("./collect/collect");
@@ -23,6 +24,7 @@ const takeWhile = require("./remove/takeWhile");
 const zip = require("./transform/zip");
 
 module.exports = {
+  async,
   chain,
   concat,
   collect,

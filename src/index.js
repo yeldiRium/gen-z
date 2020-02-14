@@ -1,3 +1,5 @@
+const chain = require("./transform/chain");
+const concat = require("./create/concat");
 const collect = require("./collect/collect");
 const collectInArray = require("./collect/collectInArray");
 const collectInSet = require("./collect/collectInSet");
@@ -19,6 +21,8 @@ const takeWhile = require("./remove/takeWhile");
 const zip = require("./transform/zip");
 
 module.exports = {
+  chain,
+  concat,
   collect,
   collectInArray,
   collectInSet,

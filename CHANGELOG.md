@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/yeldiRium/gen-z/compare/v1.0.0...v1.0.1) (2020-02-14)
+
+
+### Bug Fixes
+
+* Fix package name. ([6eafcc7](https://github.com/yeldiRium/gen-z/commit/6eafcc7d7c44c8130dd3ea2bd9be86855e67e492))
+
 # 1.0.0 (2020-02-14)
 
 

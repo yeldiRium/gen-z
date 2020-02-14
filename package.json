@@ -1,5 +1,5 @@
 {
-  "name": "gen-z",
+  "name": "@yeldirium/gen-z",
   "version": "1.0.0",
   "description": "Helpers for generators.",
   "keywords": [

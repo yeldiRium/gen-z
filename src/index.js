@@ -5,6 +5,7 @@ const collectInArray = require("./collect/collectInArray");
 const collectInSet = require("./collect/collectInSet");
 const cycle = require("./create/cycle");
 const drop = require("./remove/drop");
+const dropRepeats = require("./remove/dropRepeats");
 const dropWhile = require("./remove/dropWhile");
 const filter = require("./remove/filter");
 const find = require("./search/find");
@@ -29,6 +30,7 @@ module.exports = {
   collectInSet,
   cycle,
   drop,
+  dropRepeats,
   dropWhile,
   filter,
   find,

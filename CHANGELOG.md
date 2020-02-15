@@ -1,3 +1,23 @@
+# [2.0.0](https://github.com/yeldiRium/gen-z/compare/v1.1.0...v2.0.0) (2020-02-15)
+
+
+### Bug Fixes
+
+* Remove obsolete require. ([a0fc2a0](https://github.com/yeldiRium/gen-z/commit/a0fc2a0f68fa6ae36550401ce1378d6e7c071e99))
+
+
+### Features
+
+* Implement forEach and echo; Add an example to the readme. ([a52712a](https://github.com/yeldiRium/gen-z/commit/a52712a82121e791d7f7de204ce22e0a8054464d))
+* Implement retryable and acknowledgable. ([0e9d606](https://github.com/yeldiRium/gen-z/commit/0e9d606f8131f8ac5bba7513a5084f5746ce406f))
+* Vastly improve documentation and restructure library. ([a45256a](https://github.com/yeldiRium/gen-z/commit/a45256a417000f17686c350c80ecbd5c267d4b07))
+
+
+### BREAKING CHANGES
+
+* Helpers for synchronous generators are now
+under g.sync instead of directly under g.
+
 # [1.1.0](https://github.com/yeldiRium/gen-z/compare/v1.0.3...v1.1.0) (2020-02-15)
 
 

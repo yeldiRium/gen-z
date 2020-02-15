@@ -10,6 +10,21 @@ node.js streams, but not guaranteed.</p>
 </dd>
 </dl>
 
+## Functions
+
+<dl>
+<dt><a href="#forEach">forEach(callback, sourceGenerator)</a></dt>
+<dd><p>Executes the <code>callback</code> for each value yielded by the <code>sourceGenerator</code>.</p>
+<p>Each return value of the <code>callback</code> is passed to the next next-function call
+on the <code>sourceGenerator</code>.</p>
+</dd>
+<dt><a href="#echo">echo()</a></dt>
+<dd><p>Yields the value passed to next and thus echos the values passed into it.</p>
+<p>The first yielded value is always undefined and the first value passod to
+next() is ignored. This is due to how generators work.</p>
+</dd>
+</dl>
+
 <a name="g_sync"></a>
 
 ## g:sync
@@ -21,7 +36,7 @@ Working with or creating synchronous generators.
     * [.collectInArray(sourceGenerator, [array])](#g_sync.collectInArray) ⇒ <code>Array.&lt;any&gt;</code>
     * [.collectInSet(sourceGenerator, [set])](#g_sync.collectInSet) ⇒ <code>Set.&lt;any&gt;</code>
     * [.reduce(reducer, accumulator, sourceGenerator)](#g_sync.reduce) ⇒ <code>any</code>
-    * [.acknowledgable(sourceGenerator)](#g_sync.acknowledgable)
+    * [.acknowledgable(sourceGenerator, [onAcknowledge])](#g_sync.acknowledgable)
     * [.retryable(sourceGenerator)](#g_sync.retryable)
     * [.concat(sourceGenerator1, sourceGenerator2)](#g_sync.concat)
     * [.cycle(array)](#g_sync.cycle)
@@ -97,7 +112,7 @@ Reduces the values yielded by `sourceGenerator` by repeatedly applying
 
 <a name="g_sync.acknowledgable"></a>
 
-### g:sync.acknowledgable(sourceGenerator)
+### g:sync.acknowledgable(sourceGenerator, [onAcknowledge])
 Makes a generator acknowledgable. The generator repeatedly yields each value
 from the `sourceGenerator` until the value is explicitly acknowledged by
 passing true to next().
@@ -109,6 +124,7 @@ This is basically the opposite of `g:sync.retryable`.
 | Param | Type |
 | --- | --- |
 | sourceGenerator | <code>Generator</code> | 
+| [onAcknowledge] | <code>function</code> | 
 
 <a name="g_sync.retryable"></a>
 
@@ -443,3 +459,44 @@ iterable will be flattened in the generator.
 | --- | --- |
 | iterable | <code>Iterable</code> | 
 
+<a name="forEach"></a>
+
+## forEach(callback, sourceGenerator)
+Executes the `callback` for each value yielded by the `sourceGenerator`.
+
+Each return value of the `callback` is passed to the next next-function call
+on the `sourceGenerator`.
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| callback | <code>function</code> | 
+| sourceGenerator | <code>Generator</code> | 
+
+**Example**  
+```js
+const generator = acknowledgable(eventsFromSomewhere(), acknowledgeEvent);
+forEach(
+  event => {
+    try {
+      sendEventSomewhere(event);
+
+      // This acknowledges the event via acknowledgable above.
+      return true;
+    } catch {
+      return false;
+    }
+  },
+  generator
+);
+```
+<a name="echo"></a>
+
+## echo()
+Yields the value passed to next and thus echos the values passed into it.
+
+The first yielded value is always undefined and the first value passod to
+next() is ignored. This is due to how generators work.
+
+**Kind**: global function  

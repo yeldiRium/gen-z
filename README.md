@@ -28,7 +28,7 @@ Everything with more than one parameter is curried.
 Get the powers of 2 from 2^10 to 2^15:
 
 ```javascript
-const g = require('gen-z');
+const g = require('gen-z').sync;
 
 console.log(
     g.collect(
@@ -45,4 +45,4 @@ console.log(
 
 ## Documentation
 
-[Here.](./api.md) (Incomplete. I'm having problems with jsdoc.)
+[Here.](./API.md) (Incomplete. I'm having problems with jsdoc.)

@@ -2,7 +2,7 @@ const collectInArray = require("../collect/collectInArray");
 const from = require("./from");
 
 describe("async.create.from", () => {
-  it("asynchronously generates the contents of an iterable, resolves promises", async () => {
+  it("asynchronously yields the contents of an iterable, resolves promises", async () => {
     const input = [
       Promise.resolve(5),
       new Promise(resolve => setTimeout(() => resolve(8), 20)),

@@ -4,28 +4,28 @@ const collectInSet = require("./collectInSet");
 const from = require("../create/from");
 
 describe("async.collect.collectInSet", () => {
-  it("collects the content of an async generator in a set", async () => {
-    const gen = from([Promise.resolve(6), 8, Promise.resolve(10)]);
+  it("collects all values yielded by an async generator in a set", async () => {
+    const sourceGenerator = from([Promise.resolve(6), 8, Promise.resolve(10)]);
 
-    const result = await collectInSet(gen);
+    const result = await collectInSet(sourceGenerator);
 
     expect(result).toStrictEqual(new Set([6, 8, 10]));
   });
 
-  it("collects the content in the given set", async () => {
+  it("collects all values yielded by an async generator in the given set", async () => {
     const set = new Set();
 
-    const gen = from([Promise.resolve(10)]);
+    const sourceGenerator = from([Promise.resolve(10)]);
 
-    await collectInSet(gen, set);
+    await collectInSet(sourceGenerator, set);
 
     expect(set).toStrictEqual(new Set([10]));
   });
 
   it("rejects if an async generator throws an error", async () => {
-    const gen = from([Promise.reject(new Error("Blub."))]);
+    const sourceGenerator = from([Promise.reject(new Error("Blub."))]);
 
-    await expect(collectInSet(gen)).rejects.toThrow("Blub.");
+    await expect(collectInSet(sourceGenerator)).rejects.toThrow("Blub.");
   });
 
   it("works with streams", async () => {

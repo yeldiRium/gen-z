@@ -1,17 +1,17 @@
 /**
- * Collects the elements of an asynchronous generator in a new or the given
- * array.
+ * Collects the values yielded by the asynchronous `sourceGenerator` in a new or
+ * the given array.
  *
- * Also works with streams.
+ * @memberOf g:async
  *
- * @param {AsyncIterator} gen
+ * @param {AsyncIterator} sourceGenerator
  * @param {any[]} array
  * @async
  * @returns {Promise<any[]>}
  */
-const collectInArray = async (gen, array = []) => {
-  for await (const element of gen) {
-    array.push(element);
+const collectInArray = async (sourceGenerator, array = []) => {
+  for await (const value of sourceGenerator) {
+    array.push(value);
   }
 
   return array;

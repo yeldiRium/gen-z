@@ -1,8 +1,8 @@
 /**
- * Collects the elements of an asynchronous generator in a new or the given
- * array.
+ * Collects the values yielded by the asynchronous `sourceGenerator` in a new or
+ * the given set.
  *
- * Also works with streams.
+ * @memberOf g:async
  *
  * @param {AsyncIterator} gen
  * @param {Set<any>} set
@@ -10,8 +10,8 @@
  * @returns {Promise<Set<any>>}
  */
 const collectInSet = async (gen, set = new Set()) => {
-  for await (const element of gen) {
-    set.add(element);
+  for await (const value of gen) {
+    set.add(value);
   }
 
   return set;

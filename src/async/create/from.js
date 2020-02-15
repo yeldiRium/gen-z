@@ -1,6 +1,8 @@
 /**
- * Creates an async generator from a given iterable. Any promises in the
- * iterable will be flattened in the async generator.
+ * Creates an asynchronous generator from a given iterable. Any promises in the
+ * iterable will be flattened in the generator.
+ *
+ * @memberOf g:async
  *
  * @param {Iterable} iterable
  * @async
@@ -8,8 +10,8 @@
  * @yields {any}
  */
 const from = async function*(iterable) {
-  for (const element of iterable) {
-    yield await element;
+  for (const value of iterable) {
+    yield await value;
   }
 };
 

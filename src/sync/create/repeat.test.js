@@ -1,4 +1,4 @@
-const collect = require("../collect/collect");
+const collect = require("../consume/collect");
 const repeat = require("./repeat");
 const take = require("../remove/take");
 

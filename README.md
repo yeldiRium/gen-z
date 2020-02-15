@@ -25,6 +25,30 @@ yarn install @yeldirium/gen-z
 
 Everything with more than one parameter is curried.
 
+Process and acknowledge events from somewhere:
+
+```javascript
+const g = require('gen-z').sync;
+const generator = fetchEventsAsGenerator(fromSomewhere);
+
+const acknowledgable = g.acknowledgable(generator, acknowledgeEventCallback);
+
+g.forEach(
+  event => {
+    try {
+      processEventSomehow(event);
+    
+      // Acknowledge the event.
+      return true;
+    } catch {
+      // Or make the generator re-yield the event.
+      return false;
+    }
+  },
+  acknowledgable
+);
+```
+
 Get the powers of 2 from 2^10 to 2^15:
 
 ```javascript

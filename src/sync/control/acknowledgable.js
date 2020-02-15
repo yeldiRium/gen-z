@@ -8,16 +8,19 @@
  * @memberOf g:sync
  *
  * @param {Generator} sourceGenerator
+ * @param {Function} [onAcknowledge]
  * @generator
  * @yields {any}
  */
-const acknowledgable = function*(sourceGenerator) {
+const acknowledgable = function*(sourceGenerator, onAcknowledge = () => {}) {
   for (const value of sourceGenerator) {
     let acknowledged = false;
 
     while (!acknowledged) {
       acknowledged = yield value;
     }
+
+    onAcknowledge(value);
   }
 };
 

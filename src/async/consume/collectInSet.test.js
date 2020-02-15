@@ -3,7 +3,7 @@ const stream = require("stream");
 const collectInSet = require("./collectInSet");
 const from = require("../create/from");
 
-describe("async.collect.collectInSet", () => {
+describe("async.consume.collectInSet", () => {
   it("collects all values yielded by an async generator in a set", async () => {
     const sourceGenerator = from([Promise.resolve(6), 8, Promise.resolve(10)]);
 

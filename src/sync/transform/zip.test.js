@@ -1,4 +1,4 @@
-const collect = require("../collect/collect");
+const collect = require("../consume/collect");
 const range = require("../create/range");
 const zip = require("./zip");
 

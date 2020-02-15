@@ -3,7 +3,7 @@ const stream = require("stream");
 const collectInArray = require("./collectInArray");
 const from = require("../create/from");
 
-describe("async.collect.collectInArray", () => {
+describe("async.consume.collectInArray", () => {
   it("collects collects all values yielded by an async generator in an array", async () => {
     const sourceGenerator = from([Promise.resolve(6), 8, Promise.resolve(10)]);
 

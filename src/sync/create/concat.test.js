@@ -1,4 +1,4 @@
-const collect = require("../collect/collect");
+const collect = require("../consume/collect");
 const concat = require("./concat");
 const range = require("./range");
 

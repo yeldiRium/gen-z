@@ -1,4 +1,4 @@
-const collect = require("../collect/collect");
+const collect = require("../consume/collect");
 const dropRepeats = require("./dropRepeats");
 const from = require("../create/from");
 

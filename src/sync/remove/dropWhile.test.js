@@ -1,4 +1,4 @@
-const collect = require("../collect/collect");
+const collect = require("../consume/collect");
 const dropWhile = require("./dropWhile");
 const range = require("../create/range");
 

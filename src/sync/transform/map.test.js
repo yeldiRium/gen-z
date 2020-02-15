@@ -1,4 +1,4 @@
-const collect = require("../collect/collect");
+const collect = require("../consume/collect");
 const map = require("./map");
 const range = require("../create/range");
 

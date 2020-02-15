@@ -1,4 +1,4 @@
-const collectInArray = require("../collect/collectInArray");
+const collectInArray = require("../consume/collectInArray");
 const from = require("./from");
 
 describe("async.create.from", () => {

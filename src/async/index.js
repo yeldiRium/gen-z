@@ -6,9 +6,9 @@
  * @typicalname g
  */
 
-const collect = require("./collect/collect");
-const collectInArray = require("./collect/collectInArray");
-const collectInSet = require("./collect/collectInSet");
+const collect = require("./consume/collect");
+const collectInArray = require("./consume/collectInArray");
+const collectInSet = require("./consume/collectInSet");
 const from = require("./create/from");
 
 module.exports = {

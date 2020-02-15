@@ -1,4 +1,4 @@
-const collect = require("../collect/collect");
+const collect = require("../consume/collect");
 const filter = require("./filter");
 const range = require("../create/range");
 

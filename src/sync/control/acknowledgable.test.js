@@ -37,6 +37,25 @@ describe("acknowledgable", () => {
     });
   });
 
+  it("calls the callback on acknowledgement", () => {
+    const sourceGenerator = iterate(a => a * 2, 1);
+    const callback = jest.fn();
+
+    const acknowledgableGenerator = acknowledgable(sourceGenerator, callback);
+
+    acknowledgableGenerator.next();
+    acknowledgableGenerator.next(true);
+    acknowledgableGenerator.next(true);
+    acknowledgableGenerator.next();
+    acknowledgableGenerator.next();
+    acknowledgableGenerator.next(true);
+
+    expect(callback.mock.calls.length).toBe(3);
+    expect(callback.mock.calls[0][0]).toBe(1);
+    expect(callback.mock.calls[1][0]).toBe(2);
+    expect(callback.mock.calls[2][0]).toBe(4);
+  });
+
   it("propagates errors", () => {
     const sourceGenerator = (function*() {
       yield 5;

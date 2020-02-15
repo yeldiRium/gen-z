@@ -1,5 +1,5 @@
 const chain = require("./chain");
-const collect = require("../collect/collect");
+const collect = require("../consume/collect");
 const range = require("../create/range");
 
 describe("chain", () => {

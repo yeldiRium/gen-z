@@ -1,3 +1,4 @@
+const acknowledgable = require("./control/acknowledgable");
 const async = require("./async");
 const chain = require("./transform/chain");
 const concat = require("./create/concat");
@@ -17,6 +18,7 @@ const map = require("./transform/map");
 const range = require("./create/range");
 const reduce = require("./collect/reduce");
 const repeat = require("./create/repeat");
+const retryable = require("./control/retryable");
 const some = require("./search/some");
 const tail = require("./remove/tail");
 const take = require("./remove/take");
@@ -24,6 +26,7 @@ const takeWhile = require("./remove/takeWhile");
 const zip = require("./transform/zip");
 
 module.exports = {
+  acknowledgable,
   async,
   chain,
   concat,
@@ -41,8 +44,9 @@ module.exports = {
   iterate,
   map,
   range,
-  repeat,
   reduce,
+  repeat,
+  retryable,
   some,
   tail,
   take,

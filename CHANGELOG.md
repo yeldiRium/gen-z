@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/yeldiRium/gen-z/compare/v1.0.3...v1.1.0) (2020-02-15)
+
+
+### Features
+
+* Implement async from and collect. ([69618b6](https://github.com/yeldiRium/gen-z/commit/69618b6ada4314849a2d12a993a41abd19f7a0a9))
+
 ## [1.0.3](https://github.com/yeldiRium/gen-z/compare/v1.0.2...v1.0.3) (2020-02-14)
 
 

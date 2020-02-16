@@ -1,4 +1,4 @@
-const collectInArray = require("../consume/collectInArray");
+const collect = require("../consume/collect");
 const from = require("./from");
 
 describe("async.create.from", () => {
@@ -9,22 +9,49 @@ describe("async.create.from", () => {
       10
     ];
 
-    const gen = from(input);
+    const sourceGenerator = from(input);
 
-    const result = await collectInArray(gen);
+    const result = await collect(sourceGenerator);
     expect(result).toStrictEqual([5, 8, 10]);
+  });
+
+  it("works with other asynchronous generators", async () => {
+    const sourceGenerator = (async function*() {
+      yield 5;
+      yield 6;
+      yield 7;
+    })();
+
+    const fromGenerator = from(sourceGenerator);
+
+    const result = await collect(fromGenerator);
+    expect(result).toStrictEqual([5, 6, 7]);
+  });
+
+  it("works with synchronous generators", async () => {
+    const sourceGenerator = (function*() {
+      yield 5;
+      yield 6;
+      yield 7;
+    })();
+
+    const fromGenerator = from(sourceGenerator);
+
+    const result = await collect(fromGenerator);
+    expect(result).toStrictEqual([5, 6, 7]);
   });
 
   it("throws an error if a promise rejects", async () => {
     const input = [Promise.reject(new Error("Blub."))];
 
-    const gen = from(input);
+    const sourceGenerator = from(input);
 
     await expect(
       (async () => {
         // eslint-disable-next-line no-unused-vars
-        for await (const element of gen) {
-          // The for-await loop should throw an error when invoking gen.next()
+        for await (const element of sourceGenerator) {
+          // The for-await loop should throw an error when invoking
+          // sourceGenerator.next()
         }
       })()
     ).rejects.toThrow("Blub.");

@@ -10,7 +10,7 @@
  * @yields {any}
  */
 const from = async function*(iterable) {
-  for (const value of iterable) {
+  for await (const value of iterable) {
     yield await value;
   }
 };

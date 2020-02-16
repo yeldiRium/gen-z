@@ -35,4 +35,14 @@ describe("curry", () => {
     expect(f2).toBeInstanceOf(Function);
     expect(result).toBe(18);
   });
+
+  it("works with async functions", async () => {
+    const f = async (a, b) => a + b;
+    const fc = curry(f);
+
+    const f1 = fc(5);
+    const result = f1(8);
+
+    await expect(result).resolves.toBe(13);
+  });
 });

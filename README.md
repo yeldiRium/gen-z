@@ -69,4 +69,4 @@ console.log(
 
 ## Documentation
 
-[Here.](./API.md) (Incomplete. I'm having problems with jsdoc.)
+[Here.](./API.md)

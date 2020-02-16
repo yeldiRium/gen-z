@@ -2,7 +2,7 @@ const collect = require("../consume/collect");
 const drop = require(".//drop");
 const range = require("../create/range");
 
-describe("drop", () => {
+describe("sync.remove.drop", () => {
   it("drops n values from the start of the generator", () => {
     const sourceGenerator = range(10);
 

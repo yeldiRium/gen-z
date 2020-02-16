@@ -1,7 +1,7 @@
 const acknowledgable = require("./acknowledgable");
 const iterate = require("../create/iterate");
 
-describe("acknowledgable", () => {
+describe("sync.control.acknowledgable", () => {
   it("makes a generator repeat each value until it is explicitly acknowledged by passing true to next()", () => {
     const sourceGenerator = iterate(a => a * 2, 1);
 

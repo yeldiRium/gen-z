@@ -1,7 +1,7 @@
 const find = require("./find");
 const range = require("../create/range");
 
-describe("find", () => {
+describe("sync.search.find", () => {
   it("returns the first value in the generator that satisfies the predicate", () => {
     const sourceGenerator = range(10);
 

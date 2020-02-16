@@ -2,7 +2,7 @@ const collect = require("../consume/collect");
 const concat = require("./concat");
 const range = require("./range");
 
-describe("concat", () => {
+describe("sync.create.concat", () => {
   it("concatenates two generators", () => {
     const sourceGenerator1 = range(5);
     const sourceGenerator2 = range(4, -1, -1);

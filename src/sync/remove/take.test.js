@@ -2,7 +2,7 @@ const collect = require("../consume/collect");
 const range = require("../create/range");
 const take = require("./take");
 
-describe("take", () => {
+describe("sync.remove.take", () => {
   it("takes n items from a generator", () => {
     const sourceGenerator = range(0, 10);
 

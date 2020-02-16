@@ -2,7 +2,7 @@ const chain = require("./chain");
 const collect = require("../consume/collect");
 const range = require("../create/range");
 
-describe("chain", () => {
+describe("sync.transform.chain", () => {
   it("applies a function to a generators values and concatenates resulting generators", () => {
     const sourceGenerator = range(5);
     const f = a => range(a);

@@ -2,7 +2,7 @@ const head = require("./head");
 const range = require("../create/range");
 const repeat = require("../create/repeat");
 
-describe("head", () => {
+describe("sync.remove.head", () => {
   it("returns the first value yielded by the generator", () => {
     const sourceGenerator = range(10);
 

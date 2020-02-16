@@ -2,7 +2,7 @@ const collect = require("../consume/collect");
 const map = require("./map");
 const range = require("../create/range");
 
-describe("map", () => {
+describe("sync.transform.map", () => {
   it("maps the values yielded by a generator", () => {
     const sourceGenerator = range(5);
 

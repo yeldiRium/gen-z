@@ -1,6 +1,6 @@
 const echo = require("./echo");
 
-describe("echo", () => {
+describe("sync.create.echo", () => {
   it("yields undefined, then always the value passed to next", () => {
     const sourceGenerator = echo();
 

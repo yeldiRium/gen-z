@@ -2,7 +2,7 @@ const collect = require("../consume/collect");
 const dropRepeats = require("./dropRepeats");
 const from = require("../create/from");
 
-describe("dropRepeats", () => {
+describe("sync.remove.dropRepeats", () => {
   it("drops repeating values from the generator", () => {
     const sourceGenerator = from([1, 1, 1, 1, 2, 3, 3, 4]);
 

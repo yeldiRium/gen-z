@@ -1,7 +1,7 @@
 const collectInArray = require("./collectInArray");
 const range = require("../create/range");
 
-describe("collectInArray", () => {
+describe("sync.consume.collectInArray", () => {
   it("collects all values yielded by a generator in an array", () => {
     const sourceGenerator = range(10);
 

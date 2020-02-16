@@ -1,7 +1,7 @@
 const collect = require("../consume/collect");
 const from = require("./from");
 
-describe("from", () => {
+describe("sync.create.from", () => {
   it("creates a generator from an array", () => {
     const values = [1, 3, 3, 7];
 

@@ -2,7 +2,7 @@ const collect = require("../consume/collect");
 const range = require("../create/range");
 const tail = require("./tail");
 
-describe("tail", () => {
+describe("sync.remove.tail", () => {
   it("drops the first value from the generator", () => {
     const sourceGenerator = range(5);
 

@@ -2,7 +2,7 @@ const collect = require("../consume/collect");
 const dropWhile = require("./dropWhile");
 const range = require("../create/range");
 
-describe("dropWhile", () => {
+describe("sync.remove.dropWhile", () => {
   it("drops values from the generator as long as the predicate matches", () => {
     const sourceGenerator = range(10);
 

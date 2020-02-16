@@ -1,7 +1,7 @@
 const range = require("../create/range");
 const some = require("./some");
 
-describe("some", () => {
+describe("sync.search.some", () => {
   it("returns true if any of the values yielded by the generator satify the predicate", () => {
     const gen = range(10);
 

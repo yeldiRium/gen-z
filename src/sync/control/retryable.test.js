@@ -1,7 +1,7 @@
 const iterate = require("../create/iterate");
 const retryable = require("./retryable");
 
-describe("retryable", () => {
+describe("sync.control.retryable", () => {
   it("makes a generator retryable by passing a boolean to next()", () => {
     const sourceGenerator = iterate(a => a * 2, 1);
 

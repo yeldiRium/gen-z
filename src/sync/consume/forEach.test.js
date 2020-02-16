@@ -1,7 +1,7 @@
 const forEach = require("./forEach");
 const range = require("../create/range");
 
-describe("forEach", () => {
+describe("sync.consume.forEach", () => {
   it("executes a callback for each value yielded by a generator", () => {
     const sourceGenerator = range(5);
     const callback = jest.fn();

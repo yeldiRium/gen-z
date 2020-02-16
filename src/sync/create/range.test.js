@@ -1,7 +1,7 @@
 const collect = require("../consume/collect");
 const range = require("./range");
 
-describe("range", () => {
+describe("sync.create.range", () => {
   it("yields the numbers from 0 to (exclusively) end", () => {
     const values = collect(range(5));
 

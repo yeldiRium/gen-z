@@ -2,7 +2,7 @@ const collect = require("../consume/collect");
 const range = require("../create/range");
 const takeWhile = require("./takeWhile");
 
-describe("takeWhile", () => {
+describe("sync.remove.takeWhile", () => {
   it("yields values from the generator as long as the predicate matches", () => {
     const sourceGenerator = range(10);
 

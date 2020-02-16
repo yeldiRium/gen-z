@@ -1,7 +1,7 @@
 const range = require("../create/range");
 const reduce = require("./reduce");
 
-describe("reduce", () => {
+describe("sync.consume.reduce", () => {
   it("reduces a generator to a value", () => {
     const sourceGenerator = range(5);
 

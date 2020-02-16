@@ -2,7 +2,7 @@ const collect = require("../consume/collect");
 const flatten = require("./flatten");
 const from = require("./from");
 
-describe("flatten", () => {
+describe("sync.create.flatten", () => {
   it("recursively flattens generators and other iterators", () => {
     const sourceGenerator = from([
       from([1, 2]),

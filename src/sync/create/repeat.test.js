@@ -2,7 +2,7 @@ const collect = require("../consume/collect");
 const repeat = require("./repeat");
 const take = require("../remove/take");
 
-describe("repeat", () => {
+describe("sync.create.repeat", () => {
   it("yields the given value repeatedly", () => {
     const gen = repeat("a");
 

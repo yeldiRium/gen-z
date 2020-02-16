@@ -2,7 +2,7 @@ const collect = require("../consume/collect");
 const iterate = require("./iterate");
 const take = require("../remove/take");
 
-describe("iterate", () => {
+describe("sync.create.iterate", () => {
   it("yields infinite values by applying a producer function repeatedly", () => {
     const iteratingGenerator = iterate(a => a * 2, 1);
 

@@ -1,7 +1,7 @@
 const collectInSet = require("./collectInSet");
 const range = require("../create/range");
 
-describe("collectInSet", () => {
+describe("sync.consume.collectInSet", () => {
   it("collects all values yielded by a generator in a set", () => {
     const sourceGenerator = range(10);
 

@@ -3,7 +3,7 @@ const stream = require("stream");
 const collect = require("./collect");
 const from = require("../create/from");
 
-describe("collect", () => {
+describe("async.consume.collect", () => {
   it("collects all values yielded by an async generator in an array", async () => {
     const sourceGenerator = from([0, 1, 2]);
 

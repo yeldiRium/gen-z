@@ -2,7 +2,7 @@ const collect = require("../consume/collect");
 const cycle = require("./cycle");
 const take = require("../remove/take");
 
-describe("cycle", () => {
+describe("sync.create.cycle", () => {
   it("cycles infinitely through an array", () => {
     const values = [1, 3, 3, 7];
 

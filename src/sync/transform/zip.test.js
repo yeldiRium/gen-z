@@ -2,7 +2,7 @@ const collect = require("../consume/collect");
 const range = require("../create/range");
 const zip = require("./zip");
 
-describe("zip", () => {
+describe("sync.transform.zip", () => {
   it("zips two generators until one of them is done", () => {
     const sourceGenerator1 = range(5);
     const sourceGenerator2 = range(10, 0, -1);

@@ -2,7 +2,7 @@ const collect = require("../consume/collect");
 const filter = require("./filter");
 const range = require("../create/range");
 
-describe("filter", () => {
+describe("sync.remove.filter", () => {
   it("filters values out of a generator", () => {
     const sourceGenerator = range(10);
 

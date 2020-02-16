@@ -1,6 +1,6 @@
 /**
- * Makes a generator retryable. The generator will re-yield the previous value
- * if true is passed to next().
+ * Makes a generator retryable. The generator will re-yield the previously
+ * yielded value if true is passed to next().
  *
  * This is basically the opposite of `g:sync.acknowledgable`.
  *

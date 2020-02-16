@@ -13,6 +13,10 @@ const collectInSet = require("./consume/collectInSet");
 const forEach = require("./consume/forEach");
 const reduce = require("./consume/reduce");
 
+// Control
+const acknowledgable = require("./control/acknowledgable");
+const retryable = require("./control/retryable");
+
 // Create
 const from = require("./create/from");
 
@@ -22,5 +26,9 @@ module.exports = {
   collectInSet,
   forEach,
   reduce,
+
+  acknowledgable,
+  retryable,
+
   from
 };

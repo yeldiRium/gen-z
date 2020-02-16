@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/yeldiRium/gen-z/compare/v2.2.0...v2.2.1) (2020-02-16)
+
+
+### Bug Fixes
+
+* Remove obsolete stuff from readme. ([cab7532](https://github.com/yeldiRium/gen-z/commit/cab7532f1825840d31a595a6795373885e86a31d))
+
 # [2.2.0](https://github.com/yeldiRium/gen-z/compare/v2.1.1...v2.2.0) (2020-02-16)
 
 

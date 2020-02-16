@@ -1,3 +1,4 @@
+const fs = require("fs");
 const stream = require("stream");
 
 const collect = require("./collect");
@@ -41,11 +42,23 @@ describe("async.consume.collect", () => {
     await expect(collect(sourceGenerator)).rejects.toThrow("Blub.");
   });
 
-  it("works with streams", async () => {
-    const input = stream.Readable.from([0, 1, 2]);
+  describe("miscellaneous", () => {
+    it("works with streams", async () => {
+      const input = stream.Readable.from([0, 1, 2]);
 
-    const result = await collect(input);
+      const result = await collect(input);
 
-    expect(result).toStrictEqual([0, 1, 2]);
+      expect(result).toStrictEqual([0, 1, 2]);
+    });
+
+    it("can read a file buffer stream into a string", async () => {
+      const inputStream = fs.createReadStream(__filename);
+
+      const content = Buffer.concat(await collect(inputStream)).toString();
+
+      expect(content).toContain(
+        "this token should exist since it exists in this file this is circularrrrrrr"
+      );
+    });
   });
 });

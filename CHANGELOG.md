@@ -1,3 +1,10 @@
+## [2.2.2](https://github.com/yeldiRium/gen-z/compare/v2.2.1...v2.2.2) (2020-02-16)
+
+
+### Bug Fixes
+
+* Add memberOf jsdoc annotation to sync.create.echo. ([b19897b](https://github.com/yeldiRium/gen-z/commit/b19897b97cfb8a59c6168dbafb3a6f9b21db45c4))
+
 ## [2.2.1](https://github.com/yeldiRium/gen-z/compare/v2.2.0...v2.2.1) (2020-02-16)
 
 

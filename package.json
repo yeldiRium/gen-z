@@ -1,6 +1,6 @@
 {
   "name": "@yeldirium/gen-z",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Helpers for generators.",
   "keywords": [
     "generator",

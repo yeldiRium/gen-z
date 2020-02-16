@@ -10,16 +10,6 @@ node.js streams, but not guaranteed.</p>
 </dd>
 </dl>
 
-## Functions
-
-<dl>
-<dt><a href="#echo">echo()</a></dt>
-<dd><p>Yields the value passed to next and thus echos the values passed into it.</p>
-<p>The first yielded value is always undefined and the first value passod to
-next() is ignored. This is due to how generators work.</p>
-</dd>
-</dl>
-
 <a name="g_sync"></a>
 
 ## g:sync
@@ -36,6 +26,7 @@ Working with or creating synchronous generators.
     * [.retryable(sourceGenerator)](#g_sync.retryable)
     * [.concat(sourceGenerator1, sourceGenerator2)](#g_sync.concat)
     * [.cycle(array)](#g_sync.cycle)
+    * [.echo()](#g_sync.echo)
     * [.flatten(sourceGenerator)](#g_sync.flatten)
     * [.from(iterable)](#g_sync.from)
     * [.iterate(producer, start)](#g_sync.iterate)
@@ -195,6 +186,15 @@ Cycles through the given `array`, yielding its values repeatedly.
 | --- | --- |
 | array | <code>Array.&lt;any&gt;</code> | 
 
+<a name="g_sync.echo"></a>
+
+### g:sync.echo()
+Yields the value passed to next and thus echos the values passed into it.
+
+The first yielded value is always undefined and the first value passod to
+next() is ignored. This is due to how generators work.
+
+**Kind**: static method of [<code>g:sync</code>](#g_sync)  
 <a name="g_sync.flatten"></a>
 
 ### g:sync.flatten(sourceGenerator)
@@ -809,12 +809,3 @@ Yields arrays with two values each.
 | sourceGenerator1 | <code>AsyncGenerator</code> | 
 | sourceGenerator2 | <code>AsyncGenerator</code> | 
 
-<a name="echo"></a>
-
-## echo()
-Yields the value passed to next and thus echos the values passed into it.
-
-The first yielded value is always undefined and the first value passod to
-next() is ignored. This is due to how generators work.
-
-**Kind**: global function  

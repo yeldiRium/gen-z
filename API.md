@@ -23,6 +23,12 @@ on the <code>sourceGenerator</code>.</p>
 <p>The first yielded value is always undefined and the first value passod to
 next() is ignored. This is due to how generators work.</p>
 </dd>
+<dt><a href="#forEach">forEach(callback, sourceGenerator)</a></dt>
+<dd><p>Executes the (optionally asynchronous) <code>callback</code> for each value
+asynchronously yielded by the <code>sourceGenerator</code>.</p>
+<p>Each resolved value of the <code>callback</code> is passed to the next next-function
+call on the <code>sourceGenerator</code>.</p>
+</dd>
 </dl>
 
 <a name="g_sync"></a>
@@ -58,6 +64,7 @@ Working with or creating synchronous generators.
     * [.chain(f, sourceGenerator)](#g_sync.chain)
     * [.map(f, sourceGenerator)](#g_sync.map)
     * [.zip(sourceGenerator1, sourceGenerator2)](#g_sync.zip)
+    * [.reduce(reducer, accumulator, sourceGenerator)](#g_sync.reduce) ⇒ <code>any</code>
 
 <a name="g_sync.collect"></a>
 
@@ -395,6 +402,21 @@ Yields arrays with two values each.
 | sourceGenerator1 | <code>Generator</code> | 
 | sourceGenerator2 | <code>Generator</code> | 
 
+<a name="g_sync.reduce"></a>
+
+### g:sync.reduce(reducer, accumulator, sourceGenerator) ⇒ <code>any</code>
+Reduces the values asynchronously yielded by the `sourceGenerator` by
+repeatedly applying (the optionally asynchronous) `reducer` to an accumulator
+and the next value.
+
+**Kind**: static method of [<code>g:sync</code>](#g_sync)  
+
+| Param | Type |
+| --- | --- |
+| reducer | <code>function</code> | 
+| accumulator | <code>any</code> | 
+| sourceGenerator | <code>AsyncGenerator</code> | 
+
 <a name="g_async"></a>
 
 ## g:async
@@ -500,3 +522,36 @@ The first yielded value is always undefined and the first value passod to
 next() is ignored. This is due to how generators work.
 
 **Kind**: global function  
+<a name="forEach"></a>
+
+## forEach(callback, sourceGenerator)
+Executes the (optionally asynchronous) `callback` for each value
+asynchronously yielded by the `sourceGenerator`.
+
+Each resolved value of the `callback` is passed to the next next-function
+call on the `sourceGenerator`.
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| callback | <code>function</code> | 
+| sourceGenerator | <code>AsyncGenerator</code> | 
+
+**Example**  
+```js
+const generator = acknowledgable(eventsFromSomewhere(), acknowledgeEvent);
+await forEach(
+  async event => {
+    try {
+      await sendEventSomewhere(event);
+
+      // This acknowledges the event via acknowledgable above.
+      return true;
+    } catch {
+      return false;
+    }
+  },
+  generator
+);
+```

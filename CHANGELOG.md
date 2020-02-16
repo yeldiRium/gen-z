@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/yeldiRium/gen-z/compare/v2.0.0...v2.1.0) (2020-02-16)
+
+
+### Features
+
+* Implement async.forEach and async.reduce. ([7cdf7ed](https://github.com/yeldiRium/gen-z/commit/7cdf7ed716f1b3d86062ae7a149fee2adfc289fd))
+
 # [2.0.0](https://github.com/yeldiRium/gen-z/compare/v1.1.0...v2.0.0) (2020-02-15)
 
 

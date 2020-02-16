@@ -3,27 +3,27 @@ const some = require("./some");
 
 describe("sync.search.some", () => {
   it("returns true if any of the values yielded by the generator satify the predicate", () => {
-    const gen = range(10);
+    const sourceGenerator = range(10);
 
-    const result = some(a => a === 7, gen);
+    const result = some(a => a === 7, sourceGenerator);
 
     expect(result).toBe(true);
   });
 
   it("returns false if none of the values yielded by the generator satify the predicate", () => {
-    const gen = range(5);
+    const sourceGenerator = range(5);
 
-    const result = some(a => a === 7, gen);
+    const result = some(a => a === 7, sourceGenerator);
 
     expect(result).toBe(false);
   });
 
   it("is curried", () => {
-    const gen = range(10);
+    const sourceGenerator = range(10);
 
     const someSeven = some(a => a === 7);
 
-    const result = someSeven(gen);
+    const result = someSeven(sourceGenerator);
 
     expect(result).toBe(true);
   });

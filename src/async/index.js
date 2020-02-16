@@ -34,6 +34,17 @@ const tail = require("./remove/tail");
 const take = require("./remove/take");
 const takeWhile = require("./remove/takeWhile");
 
+// Search
+
+const find = require("./search/find");
+const some = require("./search/some");
+
+// Transform
+
+const chain = require("./transform/chain");
+const map = require("./transform/map");
+const zip = require("./transform/zip");
+
 module.exports = {
   collect,
   collectInArray,
@@ -57,5 +68,12 @@ module.exports = {
   head,
   tail,
   take,
-  takeWhile
+  takeWhile,
+
+  find,
+  some,
+
+  chain,
+  map,
+  zip
 };

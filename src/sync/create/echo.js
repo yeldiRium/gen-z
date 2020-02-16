@@ -4,6 +4,8 @@
  * The first yielded value is always undefined and the first value passod to
  * next() is ignored. This is due to how generators work.
  *
+ * @memberOf g:sync
+ *
  * @generator
  * @yields {any}
  */

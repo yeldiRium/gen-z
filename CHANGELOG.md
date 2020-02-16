@@ -1,3 +1,19 @@
+# [2.2.0](https://github.com/yeldiRium/gen-z/compare/v2.1.1...v2.2.0) (2020-02-16)
+
+
+### Bug Fixes
+
+* Add tests for compat of sync/async.from with other generators. ([c759e31](https://github.com/yeldiRium/gen-z/commit/c759e31419c30130859319d301b66afe0e1fc506))
+* Fix year in license. ([ed71801](https://github.com/yeldiRium/gen-z/commit/ed71801ab3193952591801d29c7561f1f91fb30c))
+
+
+### Features
+
+* Add async versions of all relevant create and remove functions. ([37c0b01](https://github.com/yeldiRium/gen-z/commit/37c0b0122fda2b455e9db8494850c95285b390c8))
+* Add async versions of all relevant search and transform functions. ([a50255c](https://github.com/yeldiRium/gen-z/commit/a50255c6fa17892d69ec8e85d139f6d65f72ef3a))
+* Implement async acknowledgable and retryable. ([0ef2e2a](https://github.com/yeldiRium/gen-z/commit/0ef2e2abf058e33b7e6eb656e5a25edd6b0aa0f2))
+* Make sync.create.repeat call the given function, if it gets one. ([7a125ed](https://github.com/yeldiRium/gen-z/commit/7a125ed55128ef9ee8063e16f8c7fe83b3a5eb73))
+
 ## [2.1.1](https://github.com/yeldiRium/gen-z/compare/v2.1.0...v2.1.1) (2020-02-16)
 
 

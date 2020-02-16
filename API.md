@@ -54,6 +54,9 @@ Working with or creating synchronous generators.
     * [.chain(f, sourceGenerator)](#g_sync.chain)
     * [.map(f, sourceGenerator)](#g_sync.map)
     * [.zip(sourceGenerator1, sourceGenerator2)](#g_sync.zip)
+    * [.drop(n, sourceGenerator)](#g_sync.drop)
+    * [.filter(predicate, sourceGenerator)](#g_sync.filter)
+    * [.head(sourceGenerator)](#g_sync.head) ⇒ <code>any</code> \| <code>undefined</code>
 
 <a name="g_sync.collect"></a>
 
@@ -157,8 +160,8 @@ This is basically the opposite of `g:sync.retryable`.
 <a name="g_sync.retryable"></a>
 
 ### g:sync.retryable(sourceGenerator)
-Makes a generator retryable. The generator will re-yield the previous value
-if true is passed to next().
+Makes a generator retryable. The generator will re-yield the previously
+yielded value if true is passed to next().
 
 This is basically the opposite of `g:sync.acknowledgable`.
 
@@ -247,7 +250,8 @@ If only `start` is given, it is treated as `stop` and `start = 0` is assumed.
 <a name="g_sync.repeat"></a>
 
 ### g:sync.repeat(value)
-Yields the given value repeatedly.
+Yields the given value repeatedly. If a function is given, it is called on
+repeat. It does not cache the function's return value.
 
 **Kind**: static method of [<code>g:sync</code>](#g_sync)  
 
@@ -423,6 +427,43 @@ Yields arrays with two values each.
 | sourceGenerator1 | <code>Generator</code> | 
 | sourceGenerator2 | <code>Generator</code> | 
 
+<a name="g_sync.drop"></a>
+
+### g:sync.drop(n, sourceGenerator)
+Drop the first `n` values from the asynchronous `sourceGenerator`.
+
+**Kind**: static method of [<code>g:sync</code>](#g_sync)  
+
+| Param | Type |
+| --- | --- |
+| n | <code>number</code> | 
+| sourceGenerator | <code>AsyncGenerator</code> | 
+
+<a name="g_sync.filter"></a>
+
+### g:sync.filter(predicate, sourceGenerator)
+Filters the asynchronous `sourceGenerator` by yielding only values from it
+matching the (optionally asynchronous) `predicate`.
+
+**Kind**: static method of [<code>g:sync</code>](#g_sync)  
+
+| Param | Type |
+| --- | --- |
+| predicate | <code>function</code> | 
+| sourceGenerator | <code>Generator</code> | 
+
+<a name="g_sync.head"></a>
+
+### g:sync.head(sourceGenerator) ⇒ <code>any</code> \| <code>undefined</code>
+Returns the first value from the asynchronous `sourceGenerator` or undefined,
+if the `sourceGenerator` does not yield anything.
+
+**Kind**: static method of [<code>g:sync</code>](#g_sync)  
+
+| Param | Type |
+| --- | --- |
+| sourceGenerator | <code>AsyncGenerator</code> | 
+
 <a name="g_async"></a>
 
 ## g:async
@@ -436,7 +477,23 @@ node.js streams, but not guaranteed.
     * [.collectInSet(gen, set)](#g_async.collectInSet) ⇒ <code>Promise.&lt;Set.&lt;any&gt;&gt;</code>
     * [.forEach(callback, sourceGenerator)](#g_async.forEach)
     * [.reduce(reducer, accumulator, sourceGenerator)](#g_async.reduce) ⇒ <code>any</code>
+    * [.acknowledgable(sourceGenerator, [onAcknowledge])](#g_async.acknowledgable)
+    * [.retryable(sourceGenerator)](#g_async.retryable)
+    * [.concat(sourceGenerator1, sourceGenerator2)](#g_async.concat)
+    * [.flatten(sourceGenerator)](#g_async.flatten)
     * [.from(iterable)](#g_async.from)
+    * [.iterate(producer, start)](#g_async.iterate)
+    * [.repeat(value)](#g_async.repeat)
+    * [.dropRepeats(sourceGenerator)](#g_async.dropRepeats)
+    * [.dropWhile(predicate, sourceGenerator)](#g_async.dropWhile)
+    * [.tail(sourceGenerator)](#g_async.tail)
+    * [.take(n, sourceGenerator)](#g_async.take)
+    * [.takeWhile(predicate, sourceGenerator)](#g_async.takeWhile)
+    * [.find(predicate, sourceGenerator)](#g_async.find) ⇒ <code>any</code> \| <code>undefined</code>
+    * [.some(predicate, sourceGenerator)](#g_async.some) ⇒ <code>boolean</code>
+    * [.chain(f, sourceGenerator)](#g_async.chain)
+    * [.map(f, sourceGenerator)](#g_async.map)
+    * [.zip(sourceGenerator1, sourceGenerator2)](#g_async.zip)
 
 <a name="g_async.collect"></a>
 
@@ -526,6 +583,61 @@ and the next value.
 | accumulator | <code>any</code> | 
 | sourceGenerator | <code>AsyncGenerator</code> | 
 
+<a name="g_async.acknowledgable"></a>
+
+### g.acknowledgable(sourceGenerator, [onAcknowledge])
+Makes an asynchronous generator acknowledgable. The resulting generator
+repeatedly yields each value from the `sourceGenerator` until the value is
+explicitly acknowledged by passing true to next().
+
+This is basically the opposite of `g:async.retryable`.
+
+**Kind**: static method of [<code>g:async</code>](#g_async)  
+
+| Param | Type |
+| --- | --- |
+| sourceGenerator | <code>AsyncGenerator</code> | 
+| [onAcknowledge] | <code>function</code> | 
+
+<a name="g_async.retryable"></a>
+
+### g.retryable(sourceGenerator)
+Makes an asynchronous generator retryable. The resulting generator will
+re-yield the previously yielded value if true is passed to next().
+
+This is basically the opposite of `g:async.acknowledgable`.
+
+**Kind**: static method of [<code>g:async</code>](#g_async)  
+
+| Param | Type |
+| --- | --- |
+| sourceGenerator | <code>AsyncGenerator</code> | 
+
+<a name="g_async.concat"></a>
+
+### g.concat(sourceGenerator1, sourceGenerator2)
+Concatenates two asynchronous generators by first yielding all the values
+from `sourceGenerator1`, then all the values from `sourceGenerator2`.
+
+**Kind**: static method of [<code>g:async</code>](#g_async)  
+
+| Param | Type |
+| --- | --- |
+| sourceGenerator1 | <code>AsyncGenerator</code> | 
+| sourceGenerator2 | <code>AsyncGenerator</code> | 
+
+<a name="g_async.flatten"></a>
+
+### g.flatten(sourceGenerator)
+Recursively flattens asynchronous and synchronous generators and yields their
+values in depth-first order.
+
+**Kind**: static method of [<code>g:async</code>](#g_async)  
+
+| Param | Type |
+| --- | --- |
+| sourceGenerator | <code>AsyncGenerator</code> | 
+
 <a name="g_async.from"></a>
 
 ### g.from(iterable)
@@ -537,6 +649,165 @@ iterable will be flattened in the generator.
 | Param | Type |
 | --- | --- |
 | iterable | <code>Iterable</code> | 
+
+<a name="g_async.iterate"></a>
+
+### g.iterate(producer, start)
+Yields infinite values by repeatedly applying the optionally asynchronous
+`producer` to `start`.
+
+**Kind**: static method of [<code>g:async</code>](#g_async)  
+
+| Param | Type |
+| --- | --- |
+| producer | <code>function</code> | 
+| start | <code>any</code> | 
+
+<a name="g_async.repeat"></a>
+
+### g.repeat(value)
+Yields the given value repeatedly. If an asynchronous function is given, it
+is called on repeat. It does not cache the function's resolve value.
+
+**Kind**: static method of [<code>g:async</code>](#g_async)  
+
+| Param | Type |
+| --- | --- |
+| value | <code>any</code> | 
+
+<a name="g_async.dropRepeats"></a>
+
+### g.dropRepeats(sourceGenerator)
+Drops repeating values from the asynchronous `sourceGenerator`.
+
+**Kind**: static method of [<code>g:async</code>](#g_async)  
+
+| Param | Type |
+| --- | --- |
+| sourceGenerator | <code>AsyncGenerator</code> | 
+
+<a name="g_async.dropWhile"></a>
+
+### g.dropWhile(predicate, sourceGenerator)
+Drop values from the beginning of the asynchronous `sourceGenerator` as long
+as the values match the (optionally asynchronous) `predicate`.
+
+**Kind**: static method of [<code>g:async</code>](#g_async)  
+
+| Param | Type |
+| --- | --- |
+| predicate | <code>function</code> | 
+| sourceGenerator | <code>AsyncGenerator</code> | 
+
+<a name="g_async.tail"></a>
+
+### g.tail(sourceGenerator)
+Drops the first value from the asynchronous `sourceGenerator`.
+
+**Kind**: static method of [<code>g:async</code>](#g_async)  
+
+| Param | Type |
+| --- | --- |
+| sourceGenerator | <code>AsyncGenerator</code> | 
+
+<a name="g_async.take"></a>
+
+### g.take(n, sourceGenerator)
+Yields the first `n` values of the asynchronous `sourceGenerator`.
+
+**Kind**: static method of [<code>g:async</code>](#g_async)  
+
+| Param | Type |
+| --- | --- |
+| n | <code>number</code> | 
+| sourceGenerator | <code>AsyncGenerator</code> | 
+
+<a name="g_async.takeWhile"></a>
+
+### g.takeWhile(predicate, sourceGenerator)
+Yields values from the asynchronous `sourceGenerator` as long as they match
+the (optionally asynchronous) `predicate`.
+
+**Kind**: static method of [<code>g:async</code>](#g_async)  
+
+| Param | Type |
+| --- | --- |
+| predicate | <code>function</code> | 
+| sourceGenerator | <code>AsyncGenerator</code> | 
+
+<a name="g_async.find"></a>
+
+### g.find(predicate, sourceGenerator) ⇒ <code>any</code> \| <code>undefined</code>
+Returns the first value in the asynchronous `sourceGenerator` that matches
+the (optionally asynchronous) `predicate`. Returns undefined, if no value matches and the `sourceGenerator`
+is finite.
+
+Careful: If the `sourceGenerator` is infinite and no value matches, this will
+never resolve.
+
+**Kind**: static method of [<code>g:async</code>](#g_async)  
+
+| Param | Type |
+| --- | --- |
+| predicate | <code>function</code> | 
+| sourceGenerator | <code>AsyncGenerator</code> | 
+
+<a name="g_async.some"></a>
+
+### g.some(predicate, sourceGenerator) ⇒ <code>boolean</code>
+Returns true, if any of the value from the asynchronous `sourceGenerator`
+matches the (optionally asynchronous) `predicate`. Returns false, if none
+do and the `sourceGenerator` is finite.
+
+Careful: If the `sourceGenerator` is infinite and no value matches the
+`predicate`, this will never resolve.
+
+**Kind**: static method of [<code>g:async</code>](#g_async)  
+
+| Param | Type |
+| --- | --- |
+| predicate | <code>function</code> | 
+| sourceGenerator | <code>AsyncGenerator</code> | 
+
+<a name="g_async.chain"></a>
+
+### g.chain(f, sourceGenerator)
+Applies (the optionally asynchronous) `f` to the values of the asynchronous
+`sourceGenerator` and concatenates resulting (asynchronous) generators.
+
+**Kind**: static method of [<code>g:async</code>](#g_async)  
+
+| Param | Type |
+| --- | --- |
+| f | <code>function</code> | 
+| sourceGenerator | <code>AsyncGenerator</code> | 
+
+<a name="g_async.map"></a>
+
+### g.map(f, sourceGenerator)
+Applies (the optionally asynchronous) `f` to the values yielded by the
+asynchronous `sourceGenerator`.
+
+**Kind**: static method of [<code>g:async</code>](#g_async)  
+
+| Param | Type |
+| --- | --- |
+| f | <code>function</code> | 
+| sourceGenerator | <code>AsyncGenerator</code> | 
+
+<a name="g_async.zip"></a>
+
+### g.zip(sourceGenerator1, sourceGenerator2)
+Zips the values from asynchronous generators `sourceGenerator1` and
+`sourceGenerator2` together.
+Yields arrays with two values each.
+
+**Kind**: static method of [<code>g:async</code>](#g_async)  
+
+| Param | Type |
+| --- | --- |
+| sourceGenerator1 | <code>AsyncGenerator</code> | 
+| sourceGenerator2 | <code>AsyncGenerator</code> | 
 
 <a name="echo"></a>
 

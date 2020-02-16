@@ -6,6 +6,8 @@ const curry = require("../../internal/curry");
  * Each return value of the `callback` is passed to the next next-function call
  * on the `sourceGenerator`.
  *
+ * @memberOf g:sync
+ *
  * @param {Function} callback
  * @param {Generator} sourceGenerator
  *

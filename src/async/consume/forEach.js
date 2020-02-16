@@ -7,8 +7,11 @@ const curry = require("../../internal/curry");
  * Each resolved value of the `callback` is passed to the next next-function
  * call on the `sourceGenerator`.
  *
+ * @memberOf g:async
+ *
  * @param {Function} callback
  * @param {AsyncGenerator} sourceGenerator
+ * @async
  *
  * @example
  * const generator = acknowledgable(eventsFromSomewhere(), acknowledgeEvent);

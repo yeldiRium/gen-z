@@ -5,11 +5,12 @@ const curry = require("../../internal/curry");
  * repeatedly applying (the optionally asynchronous) `reducer` to an accumulator
  * and the next value.
  *
- * @memberOf g:sync
+ * @memberOf g:async
  *
  * @param {Function} reducer
  * @param {any} accumulator
  * @param {AsyncGenerator} sourceGenerator
+ * @asyne
  * @returns {any}
  */
 const reduce = async (reducer, accumulator, sourceGenerator) => {

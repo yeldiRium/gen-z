@@ -13,21 +13,10 @@ node.js streams, but not guaranteed.</p>
 ## Functions
 
 <dl>
-<dt><a href="#forEach">forEach(callback, sourceGenerator)</a></dt>
-<dd><p>Executes the <code>callback</code> for each value yielded by the <code>sourceGenerator</code>.</p>
-<p>Each return value of the <code>callback</code> is passed to the next next-function call
-on the <code>sourceGenerator</code>.</p>
-</dd>
 <dt><a href="#echo">echo()</a></dt>
 <dd><p>Yields the value passed to next and thus echos the values passed into it.</p>
 <p>The first yielded value is always undefined and the first value passod to
 next() is ignored. This is due to how generators work.</p>
-</dd>
-<dt><a href="#forEach">forEach(callback, sourceGenerator)</a></dt>
-<dd><p>Executes the (optionally asynchronous) <code>callback</code> for each value
-asynchronously yielded by the <code>sourceGenerator</code>.</p>
-<p>Each resolved value of the <code>callback</code> is passed to the next next-function
-call on the <code>sourceGenerator</code>.</p>
 </dd>
 </dl>
 
@@ -41,6 +30,7 @@ Working with or creating synchronous generators.
     * [.collect(sourceGenerator, [collection])](#g_sync.collect) ⇒ <code>Set.&lt;any&gt;</code> \| <code>Array.&lt;any&gt;</code>
     * [.collectInArray(sourceGenerator, [array])](#g_sync.collectInArray) ⇒ <code>Array.&lt;any&gt;</code>
     * [.collectInSet(sourceGenerator, [set])](#g_sync.collectInSet) ⇒ <code>Set.&lt;any&gt;</code>
+    * [.forEach(callback, sourceGenerator)](#g_sync.forEach)
     * [.reduce(reducer, accumulator, sourceGenerator)](#g_sync.reduce) ⇒ <code>any</code>
     * [.acknowledgable(sourceGenerator, [onAcknowledge])](#g_sync.acknowledgable)
     * [.retryable(sourceGenerator)](#g_sync.retryable)
@@ -64,7 +54,6 @@ Working with or creating synchronous generators.
     * [.chain(f, sourceGenerator)](#g_sync.chain)
     * [.map(f, sourceGenerator)](#g_sync.map)
     * [.zip(sourceGenerator1, sourceGenerator2)](#g_sync.zip)
-    * [.reduce(reducer, accumulator, sourceGenerator)](#g_sync.reduce) ⇒ <code>any</code>
 
 <a name="g_sync.collect"></a>
 
@@ -103,6 +92,38 @@ Collect the values yielded by the `sourceGenerator` in a new or given set.
 | sourceGenerator | <code>Generator</code> | 
 | [set] | <code>Set.&lt;any&gt;</code> | 
 
+<a name="g_sync.forEach"></a>
+
+### g:sync.forEach(callback, sourceGenerator)
+Executes the `callback` for each value yielded by the `sourceGenerator`.
+
+Each return value of the `callback` is passed to the next next-function call
+on the `sourceGenerator`.
+
+**Kind**: static method of [<code>g:sync</code>](#g_sync)  
+
+| Param | Type |
+| --- | --- |
+| callback | <code>function</code> | 
+| sourceGenerator | <code>Generator</code> | 
+
+**Example**  
+```js
+const generator = acknowledgable(eventsFromSomewhere(), acknowledgeEvent);
+forEach(
+  event => {
+    try {
+      sendEventSomewhere(event);
+
+      // This acknowledges the event via acknowledgable above.
+      return true;
+    } catch {
+      return false;
+    }
+  },
+  generator
+);
+```
 <a name="g_sync.reduce"></a>
 
 ### g:sync.reduce(reducer, accumulator, sourceGenerator) ⇒ <code>any</code>
@@ -402,21 +423,6 @@ Yields arrays with two values each.
 | sourceGenerator1 | <code>Generator</code> | 
 | sourceGenerator2 | <code>Generator</code> | 
 
-<a name="g_sync.reduce"></a>
-
-### g:sync.reduce(reducer, accumulator, sourceGenerator) ⇒ <code>any</code>
-Reduces the values asynchronously yielded by the `sourceGenerator` by
-repeatedly applying (the optionally asynchronous) `reducer` to an accumulator
-and the next value.
-
-**Kind**: static method of [<code>g:sync</code>](#g_sync)  
-
-| Param | Type |
-| --- | --- |
-| reducer | <code>function</code> | 
-| accumulator | <code>any</code> | 
-| sourceGenerator | <code>AsyncGenerator</code> | 
-
 <a name="g_async"></a>
 
 ## g:async
@@ -428,6 +434,8 @@ node.js streams, but not guaranteed.
     * [.collect(sourceGenerator, [collection])](#g_async.collect) ⇒ <code>Promise.&lt;(Set.&lt;any&gt;\|Array.&lt;any&gt;)&gt;</code>
     * [.collectInArray(sourceGenerator, array)](#g_async.collectInArray) ⇒ <code>Promise.&lt;Array.&lt;any&gt;&gt;</code>
     * [.collectInSet(gen, set)](#g_async.collectInSet) ⇒ <code>Promise.&lt;Set.&lt;any&gt;&gt;</code>
+    * [.forEach(callback, sourceGenerator)](#g_async.forEach)
+    * [.reduce(reducer, accumulator, sourceGenerator)](#g_async.reduce) ⇒ <code>any</code>
     * [.from(iterable)](#g_async.from)
 
 <a name="g_async.collect"></a>
@@ -469,69 +477,16 @@ the given set.
 | gen | <code>AsyncIterator</code> | 
 | set | <code>Set.&lt;any&gt;</code> | 
 
-<a name="g_async.from"></a>
+<a name="g_async.forEach"></a>
 
-### g.from(iterable)
-Creates an asynchronous generator from a given iterable. Any promises in the
-iterable will be flattened in the generator.
-
-**Kind**: static method of [<code>g:async</code>](#g_async)  
-
-| Param | Type |
-| --- | --- |
-| iterable | <code>Iterable</code> | 
-
-<a name="forEach"></a>
-
-## forEach(callback, sourceGenerator)
-Executes the `callback` for each value yielded by the `sourceGenerator`.
-
-Each return value of the `callback` is passed to the next next-function call
-on the `sourceGenerator`.
-
-**Kind**: global function  
-
-| Param | Type |
-| --- | --- |
-| callback | <code>function</code> | 
-| sourceGenerator | <code>Generator</code> | 
-
-**Example**  
-```js
-const generator = acknowledgable(eventsFromSomewhere(), acknowledgeEvent);
-forEach(
-  event => {
-    try {
-      sendEventSomewhere(event);
-
-      // This acknowledges the event via acknowledgable above.
-      return true;
-    } catch {
-      return false;
-    }
-  },
-  generator
-);
-```
-<a name="echo"></a>
-
-## echo()
-Yields the value passed to next and thus echos the values passed into it.
-
-The first yielded value is always undefined and the first value passod to
-next() is ignored. This is due to how generators work.
-
-**Kind**: global function  
-<a name="forEach"></a>
-
-## forEach(callback, sourceGenerator)
+### g.forEach(callback, sourceGenerator)
 Executes the (optionally asynchronous) `callback` for each value
 asynchronously yielded by the `sourceGenerator`.
 
 Each resolved value of the `callback` is passed to the next next-function
 call on the `sourceGenerator`.
 
-**Kind**: global function  
+**Kind**: static method of [<code>g:async</code>](#g_async)  
 
 | Param | Type |
 | --- | --- |
@@ -555,3 +510,40 @@ await forEach(
   generator
 );
 ```
+<a name="g_async.reduce"></a>
+
+### g.reduce(reducer, accumulator, sourceGenerator) ⇒ <code>any</code>
+Reduces the values asynchronously yielded by the `sourceGenerator` by
+repeatedly applying (the optionally asynchronous) `reducer` to an accumulator
+and the next value.
+
+**Kind**: static method of [<code>g:async</code>](#g_async)  
+**Asyne**:   
+
+| Param | Type |
+| --- | --- |
+| reducer | <code>function</code> | 
+| accumulator | <code>any</code> | 
+| sourceGenerator | <code>AsyncGenerator</code> | 
+
+<a name="g_async.from"></a>
+
+### g.from(iterable)
+Creates an asynchronous generator from a given iterable. Any promises in the
+iterable will be flattened in the generator.
+
+**Kind**: static method of [<code>g:async</code>](#g_async)  
+
+| Param | Type |
+| --- | --- |
+| iterable | <code>Iterable</code> | 
+
+<a name="echo"></a>
+
+## echo()
+Yields the value passed to next and thus echos the values passed into it.
+
+The first yielded value is always undefined and the first value passod to
+next() is ignored. This is due to how generators work.
+
+**Kind**: global function  

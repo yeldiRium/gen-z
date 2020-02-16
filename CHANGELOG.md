@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/yeldiRium/gen-z/compare/v2.1.0...v2.1.1) (2020-02-16)
+
+
+### Bug Fixes
+
+* Add some missing memberOf and async jsdocs annotations. ([af78a76](https://github.com/yeldiRium/gen-z/commit/af78a76150cd2ffc3996788836b6d8a6fb0445b4))
+
 # [2.1.0](https://github.com/yeldiRium/gen-z/compare/v2.0.0...v2.1.0) (2020-02-16)
 
 

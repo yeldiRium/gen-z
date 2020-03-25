@@ -13,7 +13,7 @@
  * @generator
  * @yields {any}
  */
-const acknowledgable = async function*(
+const acknowledgable = async function* (
   sourceGenerator,
   onAcknowledge = () => {}
 ) {

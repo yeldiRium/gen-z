@@ -23,7 +23,7 @@ describe("async.remove.tail", () => {
   });
 
   it("yields nothing, if the generator yields nothing", async () => {
-    const asyncSourceGenerator = (async function*() {})();
+    const asyncSourceGenerator = (async function* () {})();
 
     const droppedGenerator = tail(asyncSourceGenerator);
 
@@ -32,7 +32,7 @@ describe("async.remove.tail", () => {
   });
 
   it("propagates rejection", async () => {
-    const asyncSourceGenerator = (async function*() {
+    const asyncSourceGenerator = (async function* () {
       yield 0;
       throw new Error("Blub.");
     })();

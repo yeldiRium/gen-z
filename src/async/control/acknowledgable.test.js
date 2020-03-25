@@ -4,42 +4,42 @@ const iterate = require("../../sync/create/iterate");
 
 describe("async.control.acknowledgable", () => {
   it("makes an asynchronous generator repeat each value until it is explicitly acknowledged by passing true to next()", async () => {
-    const asyncSourceGenerator = from(iterate(a => a * 2, 1));
+    const asyncSourceGenerator = from(iterate((a) => a * 2, 1));
 
     const acknowledgableGenerator = acknowledgable(asyncSourceGenerator);
 
     await expect(acknowledgableGenerator.next()).resolves.toStrictEqual({
       value: 1,
-      done: false
+      done: false,
     });
     await expect(acknowledgableGenerator.next()).resolves.toStrictEqual({
       value: 1,
-      done: false
+      done: false,
     });
     await expect(acknowledgableGenerator.next()).resolves.toStrictEqual({
       value: 1,
-      done: false
+      done: false,
     });
     await expect(acknowledgableGenerator.next(true)).resolves.toStrictEqual({
       value: 2,
-      done: false
+      done: false,
     });
     await expect(acknowledgableGenerator.next(true)).resolves.toStrictEqual({
       value: 4,
-      done: false
+      done: false,
     });
     await expect(acknowledgableGenerator.next(true)).resolves.toStrictEqual({
       value: 8,
-      done: false
+      done: false,
     });
     await expect(acknowledgableGenerator.next()).resolves.toStrictEqual({
       value: 8,
-      done: false
+      done: false,
     });
   });
 
   it("calls the asynchronous callback on acknowledgement", async () => {
-    const asyncSourceGenerator = from(iterate(a => a * 2, 1));
+    const asyncSourceGenerator = from(iterate((a) => a * 2, 1));
     const callback = jest.fn(async () => {});
 
     const acknowledgableGenerator = acknowledgable(
@@ -61,7 +61,7 @@ describe("async.control.acknowledgable", () => {
   });
 
   it("propagates rejection", async () => {
-    const sourceGenerator = (async function*() {
+    const sourceGenerator = (async function* () {
       yield 5;
       throw new Error("Blub.");
     })();
@@ -70,11 +70,11 @@ describe("async.control.acknowledgable", () => {
 
     await expect(acknowledgableGenerator.next()).resolves.toStrictEqual({
       value: 5,
-      done: false
+      done: false,
     });
     await expect(acknowledgableGenerator.next()).resolves.toStrictEqual({
       value: 5,
-      done: false
+      done: false,
     });
     await expect(acknowledgableGenerator.next(true)).rejects.toThrow("Blub.");
   });

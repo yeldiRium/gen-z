@@ -8,7 +8,7 @@
  * @generator
  * @yields {any}
  */
-const dropRepeats = async function*(sourceGenerator) {
+const dropRepeats = async function* (sourceGenerator) {
   // The start value must be something that cannot be equal to anything else.
   // A symbol is probably the best choice.
   let previous = Symbol("null");

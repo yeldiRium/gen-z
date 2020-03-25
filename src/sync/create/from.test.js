@@ -12,7 +12,7 @@ describe("sync.create.from", () => {
   });
 
   it("works with other synchronous generators", async () => {
-    const sourceGenerator = (function*() {
+    const sourceGenerator = (function* () {
       yield 5;
       yield 6;
       yield 7;

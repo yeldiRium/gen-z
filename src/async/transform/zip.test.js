@@ -16,7 +16,7 @@ describe("async.transform.zip", () => {
       [1, 9],
       [2, 8],
       [3, 7],
-      [4, 6]
+      [4, 6],
     ]);
   });
 
@@ -34,12 +34,12 @@ describe("async.transform.zip", () => {
       [1, 9],
       [2, 8],
       [3, 7],
-      [4, 6]
+      [4, 6],
     ]);
   });
 
   it("propagates rejections", async () => {
-    const asyncSourceGenerator1 = (async function*() {
+    const asyncSourceGenerator1 = (async function* () {
       yield 1;
       throw new Error("Blub.");
     })();

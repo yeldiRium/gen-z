@@ -12,7 +12,7 @@ describe("sync.remove.head", () => {
   });
 
   it("returns undefined, if the generator yields nothing", () => {
-    const sourceGenerator = (function*() {})();
+    const sourceGenerator = (function* () {})();
 
     const result = head(sourceGenerator);
 

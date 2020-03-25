@@ -75,5 +75,5 @@ module.exports = {
 
   chain,
   map,
-  zip
+  zip,
 };

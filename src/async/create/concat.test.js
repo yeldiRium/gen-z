@@ -30,7 +30,7 @@ describe("async.create.concat", () => {
 
   it("passes errors from the generators through", async () => {
     const asyncSourceGenerator1 = from(range(5));
-    const asyncSourceGenerator2 = (async function*() {
+    const asyncSourceGenerator2 = (async function* () {
       yield 5;
       throw new Error("Blub.");
     })();

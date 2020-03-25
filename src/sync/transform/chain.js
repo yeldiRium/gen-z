@@ -11,7 +11,7 @@ const curry = require("../../internal/curry");
  * @generator
  * @yields {any}
  */
-const chain = function*(f, sourceGenerator) {
+const chain = function* (f, sourceGenerator) {
   for (const value of sourceGenerator) {
     const next = f(value);
 

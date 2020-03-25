@@ -3,5 +3,5 @@ const sync = require("./sync");
 
 module.exports = {
   async,
-  sync
+  sync,
 };

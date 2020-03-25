@@ -6,7 +6,7 @@
  * @param {Generator} sourceGenerator
  * @returns {any | undefined}
  */
-const head = sourceGenerator => {
+const head = (sourceGenerator) => {
   const next = sourceGenerator.next();
 
   return next.value;

@@ -8,7 +8,7 @@ describe("async.remove.dropWhile", () => {
     const asyncSourceGenerator = from(range(10));
 
     const droppedGenerator = dropWhile(
-      async elem => elem < 5,
+      async (elem) => elem < 5,
       asyncSourceGenerator
     );
 
@@ -19,7 +19,7 @@ describe("async.remove.dropWhile", () => {
   it("is curried", async () => {
     const asyncSourceGenerator = from(range(10));
 
-    const dropUnderFive = dropWhile(elem => elem < 5);
+    const dropUnderFive = dropWhile((elem) => elem < 5);
     const droppedGenerator = dropUnderFive(asyncSourceGenerator);
 
     const result = await collect(droppedGenerator);
@@ -27,13 +27,13 @@ describe("async.remove.dropWhile", () => {
   });
 
   it("propagates rejection", async () => {
-    const asyncSourceGenerator = (async function*() {
+    const asyncSourceGenerator = (async function* () {
       yield 2;
       throw new Error("Blub.");
     })();
 
     const droppedGenerator = dropWhile(
-      async a => a % 2 === 0,
+      async (a) => a % 2 === 0,
       asyncSourceGenerator
     );
 

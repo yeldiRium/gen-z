@@ -5,7 +5,7 @@ describe("sync.search.some", () => {
   it("returns true if any of the values yielded by the generator satify the predicate", () => {
     const sourceGenerator = range(10);
 
-    const result = some(a => a === 7, sourceGenerator);
+    const result = some((a) => a === 7, sourceGenerator);
 
     expect(result).toBe(true);
   });
@@ -13,7 +13,7 @@ describe("sync.search.some", () => {
   it("returns false if none of the values yielded by the generator satify the predicate", () => {
     const sourceGenerator = range(5);
 
-    const result = some(a => a === 7, sourceGenerator);
+    const result = some((a) => a === 7, sourceGenerator);
 
     expect(result).toBe(false);
   });
@@ -21,7 +21,7 @@ describe("sync.search.some", () => {
   it("is curried", () => {
     const sourceGenerator = range(10);
 
-    const someSeven = some(a => a === 7);
+    const someSeven = some((a) => a === 7);
 
     const result = someSeven(sourceGenerator);
 
@@ -29,21 +29,21 @@ describe("sync.search.some", () => {
   });
 
   it("propagates errors", () => {
-    const sourceGenerator = (function*() {
+    const sourceGenerator = (function* () {
       yield 2;
       throw new Error("Blub.");
     })();
 
-    expect(() => some(a => a === 7, sourceGenerator)).toThrow("Blub.");
+    expect(() => some((a) => a === 7, sourceGenerator)).toThrow("Blub.");
   });
 
   it("does not propagate errors occuring after a value was found", () => {
-    const sourceGenerator = (function*() {
+    const sourceGenerator = (function* () {
       yield 2;
       yield 3;
       throw new Error("Blub.");
     })();
 
-    expect(() => some(a => a === 2, sourceGenerator)).not.toThrow();
+    expect(() => some((a) => a === 2, sourceGenerator)).not.toThrow();
   });
 });

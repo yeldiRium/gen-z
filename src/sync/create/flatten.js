@@ -10,7 +10,7 @@
  * @generator
  * @yields {any}
  */
-const flatten = function*(sourceGenerator) {
+const flatten = function* (sourceGenerator) {
   for (const value of sourceGenerator) {
     if (value.next === undefined) {
       yield value;

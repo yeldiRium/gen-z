@@ -12,7 +12,7 @@
  * @generator
  * @yields {any}
  */
-const acknowledgable = function*(sourceGenerator, onAcknowledge = () => {}) {
+const acknowledgable = function* (sourceGenerator, onAcknowledge = () => {}) {
   for (const value of sourceGenerator) {
     let acknowledged = false;
 

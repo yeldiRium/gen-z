@@ -9,7 +9,7 @@
  * @generator
  * @yields {any}
  */
-const repeat = async function*(value) {
+const repeat = async function* (value) {
   while (true) {
     if (value instanceof Function) {
       yield await value();

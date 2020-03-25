@@ -26,7 +26,7 @@ describe("sync.create.concat", () => {
 
   it("passes errors from the generators through", () => {
     const sourceGenerator1 = range(5);
-    const sourceGenerator2 = (function*() {
+    const sourceGenerator2 = (function* () {
       yield 5;
       throw new Error("Blub.");
     })();

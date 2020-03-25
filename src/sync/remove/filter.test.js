@@ -6,7 +6,7 @@ describe("sync.remove.filter", () => {
   it("filters values out of a generator", () => {
     const sourceGenerator = range(10);
 
-    const filteredGenerator = filter(elem => elem % 2 === 0, sourceGenerator);
+    const filteredGenerator = filter((elem) => elem % 2 === 0, sourceGenerator);
 
     const result = collect(filteredGenerator);
     expect(result).toStrictEqual([0, 2, 4, 6, 8]);
@@ -15,7 +15,7 @@ describe("sync.remove.filter", () => {
   it("is curried", () => {
     const sourceGenerator = range(10);
 
-    const filterEven = filter(elem => elem % 2 === 0);
+    const filterEven = filter((elem) => elem % 2 === 0);
 
     const filteredGenerator = filterEven(sourceGenerator);
 
@@ -24,12 +24,12 @@ describe("sync.remove.filter", () => {
   });
 
   it("propagates errors", () => {
-    const sourceGenerator = (function*() {
+    const sourceGenerator = (function* () {
       yield 2;
       throw new Error("Blub.");
     })();
 
-    const filteredGenerator = filter(a => a % 2 === 0, sourceGenerator);
+    const filteredGenerator = filter((a) => a % 2 === 0, sourceGenerator);
 
     expect(() => collect(filteredGenerator)).toThrow("Blub.");
   });

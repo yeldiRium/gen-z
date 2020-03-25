@@ -6,7 +6,7 @@ const range = require("../../sync/create/range");
 describe("async.transform.chain", () => {
   it("applies a function to an asynchronous generator's values and concatenates resulting generators", async () => {
     const asyncSourceGenerator = from(range(5));
-    const f = async a => from(range(a));
+    const f = async (a) => from(range(a));
 
     const chainedGenerator = chain(f, asyncSourceGenerator);
 
@@ -17,7 +17,7 @@ describe("async.transform.chain", () => {
   it("passes through anything that's not a generator", async () => {
     const asyncSourceGenerator = from(range(5));
 
-    const chainedGenerator = chain(async a => a, asyncSourceGenerator);
+    const chainedGenerator = chain(async (a) => a, asyncSourceGenerator);
 
     const result = await collect(chainedGenerator);
     expect(result).toStrictEqual([0, 1, 2, 3, 4]);
@@ -26,7 +26,7 @@ describe("async.transform.chain", () => {
   it("is curried", async () => {
     const asyncSourceGenerator = from(range(5));
 
-    const chainRange = chain(async a => range(a));
+    const chainRange = chain(async (a) => range(a));
     const chainedGenerator = chainRange(asyncSourceGenerator);
 
     const result = await collect(chainedGenerator);
@@ -34,11 +34,11 @@ describe("async.transform.chain", () => {
   });
 
   it("propagates rejections", async () => {
-    const asyncSourceGenerator = (async function*() {
+    const asyncSourceGenerator = (async function* () {
       yield 1;
       throw new Error("Blub.");
     })();
-    const f = async a => from(range(a));
+    const f = async (a) => from(range(a));
 
     const chainedGenerator = chain(f, asyncSourceGenerator);
 

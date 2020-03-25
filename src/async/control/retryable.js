@@ -11,7 +11,7 @@
  * @async
  * @yields {any}
  */
-const retryable = async function*(sourceGenerator) {
+const retryable = async function* (sourceGenerator) {
   for await (const value of sourceGenerator) {
     let retry = true;
 

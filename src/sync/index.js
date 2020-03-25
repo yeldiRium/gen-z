@@ -70,7 +70,7 @@ module.exports = {
   some,
   chain,
   map,
-  zip
+  zip,
 };
 
 const zip = require("./transform/zip");

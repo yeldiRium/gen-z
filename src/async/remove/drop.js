@@ -11,7 +11,7 @@ const curry = require("../../internal/curry");
  * @generator
  * @yields {any}
  */
-const drop = async function*(n, sourceGenerator) {
+const drop = async function* (n, sourceGenerator) {
   for (let i = 0; i < n; i++) {
     await sourceGenerator.next();
   }

@@ -7,16 +7,16 @@ describe("sync.create.echo", () => {
     // The first call is ignored.
     expect(sourceGenerator.next("blub")).toStrictEqual({
       value: undefined,
-      done: false
+      done: false,
     });
     // From the second call on the value is echoed.
     expect(sourceGenerator.next("blub")).toStrictEqual({
       value: "blub",
-      done: false
+      done: false,
     });
     expect(sourceGenerator.next("bla")).toStrictEqual({
       value: "bla",
-      done: false
+      done: false,
     });
   });
 });

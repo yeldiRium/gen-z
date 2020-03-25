@@ -13,7 +13,7 @@ describe("async.remove.head", () => {
   });
 
   it("returns undefined, if the generator yields nothing", async () => {
-    const asyncSourceGenerator = (async function*() {})();
+    const asyncSourceGenerator = (async function* () {})();
 
     const result = await head(asyncSourceGenerator);
 

@@ -10,7 +10,7 @@ const curry = require("../../internal/curry");
  * @generator
  * @yields {any}
  */
-const drop = function*(n, sourceGenerator) {
+const drop = function* (n, sourceGenerator) {
   for (let i = 0; i < n; i++) {
     sourceGenerator.next();
   }

@@ -12,7 +12,7 @@ const curry = require("../../internal/curry");
  * @generator
  * @yields {any}
  */
-const dropWhile = async function*(predicate, sourceGenerator) {
+const dropWhile = async function* (predicate, sourceGenerator) {
   for await (const value of sourceGenerator) {
     if (await predicate(value)) {
       continue;

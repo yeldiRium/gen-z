@@ -9,7 +9,7 @@
  * @generator
  * @yields {any}
  */
-const flatten = async function*(sourceGenerator) {
+const flatten = async function* (sourceGenerator) {
   for await (const value of sourceGenerator) {
     if (value.next === undefined) {
       yield value;

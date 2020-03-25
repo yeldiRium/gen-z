@@ -11,7 +11,7 @@ const curry = require("../../internal/curry");
  * @generator
  * @yields {any}
  */
-const concat = function*(sourceGenerator1, sourceGenerator2) {
+const concat = function* (sourceGenerator1, sourceGenerator2) {
   for (const value of sourceGenerator1) {
     yield value;
   }

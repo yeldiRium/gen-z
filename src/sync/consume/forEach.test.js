@@ -18,7 +18,7 @@ describe("sync.consume.forEach", () => {
 
   it("passes the return value of the callback to next", () => {
     const fn = jest.fn();
-    const sourceGenerator = (function*() {
+    const sourceGenerator = (function* () {
       let value;
 
       for (let i = 0; i < 5; i++) {

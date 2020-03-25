@@ -7,7 +7,7 @@
  * @async
  * @returns {any | undefined}
  */
-const head = async sourceGenerator => {
+const head = async (sourceGenerator) => {
   const next = await sourceGenerator.next();
 
   return next.value;

@@ -15,7 +15,7 @@ describe("sync.transform.zip", () => {
       [1, 9],
       [2, 8],
       [3, 7],
-      [4, 6]
+      [4, 6],
     ]);
   });
 
@@ -33,12 +33,12 @@ describe("sync.transform.zip", () => {
       [1, 9],
       [2, 8],
       [3, 7],
-      [4, 6]
+      [4, 6],
     ]);
   });
 
   it("propagates errors", () => {
-    const sourceGenerator1 = (function*() {
+    const sourceGenerator1 = (function* () {
       yield 1;
       throw new Error("Blub.");
     })();

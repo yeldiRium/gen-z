@@ -33,7 +33,7 @@ describe("sync.remove.drop", () => {
   });
 
   it("propagates errors", () => {
-    const sourceGenerator = (function*() {
+    const sourceGenerator = (function* () {
       yield 2;
       throw new Error("Blub.");
     })();

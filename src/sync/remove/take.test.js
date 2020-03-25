@@ -31,7 +31,7 @@ describe("sync.remove.take", () => {
   });
 
   it("works with infinite generators", () => {
-    const sourceGenerator = (function*() {
+    const sourceGenerator = (function* () {
       let i = 0;
       while (true) {
         yield i++;
@@ -56,7 +56,7 @@ describe("sync.remove.take", () => {
   });
 
   it("propagates errors", () => {
-    const sourceGenerator = (function*() {
+    const sourceGenerator = (function* () {
       yield 2;
       throw new Error("Blub.");
     })();
@@ -67,7 +67,7 @@ describe("sync.remove.take", () => {
   });
 
   it("does not propagate errors occuring after more than n values", () => {
-    const sourceGenerator = (function*() {
+    const sourceGenerator = (function* () {
       yield 2;
       yield 3;
       throw new Error("Blub.");

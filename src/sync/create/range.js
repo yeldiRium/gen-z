@@ -22,7 +22,7 @@ const range = (start, stop, step = 1) => {
     start = 0;
   }
 
-  return (function*() {
+  return (function* () {
     if (start < stop && step < 0) {
       return;
     }

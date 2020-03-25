@@ -10,7 +10,7 @@ const curry = require("../../internal/curry");
  * @generator
  * @yields {any}
  */
-const takeWhile = function*(predicate, sourceGenerator) {
+const takeWhile = function* (predicate, sourceGenerator) {
   for (const value of sourceGenerator) {
     if (!predicate(value)) {
       return;

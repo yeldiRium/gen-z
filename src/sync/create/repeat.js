@@ -8,7 +8,7 @@
  * @generator
  * @yields {any}
  */
-const repeat = function*(value) {
+const repeat = function* (value) {
   while (true) {
     if (value instanceof Function) {
       yield value();

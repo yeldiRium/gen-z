@@ -9,7 +9,7 @@
  * @generator
  * @yields {any}
  */
-const echo = function*() {
+const echo = function* () {
   let value;
 
   while (true) {

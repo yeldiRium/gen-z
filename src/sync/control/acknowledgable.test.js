@@ -3,42 +3,42 @@ const iterate = require("../create/iterate");
 
 describe("sync.control.acknowledgable", () => {
   it("makes a generator repeat each value until it is explicitly acknowledged by passing true to next()", () => {
-    const sourceGenerator = iterate(a => a * 2, 1);
+    const sourceGenerator = iterate((a) => a * 2, 1);
 
     const acknowledgableGenerator = acknowledgable(sourceGenerator);
 
     expect(acknowledgableGenerator.next()).toStrictEqual({
       value: 1,
-      done: false
+      done: false,
     });
     expect(acknowledgableGenerator.next()).toStrictEqual({
       value: 1,
-      done: false
+      done: false,
     });
     expect(acknowledgableGenerator.next()).toStrictEqual({
       value: 1,
-      done: false
+      done: false,
     });
     expect(acknowledgableGenerator.next(true)).toStrictEqual({
       value: 2,
-      done: false
+      done: false,
     });
     expect(acknowledgableGenerator.next(true)).toStrictEqual({
       value: 4,
-      done: false
+      done: false,
     });
     expect(acknowledgableGenerator.next(true)).toStrictEqual({
       value: 8,
-      done: false
+      done: false,
     });
     expect(acknowledgableGenerator.next()).toStrictEqual({
       value: 8,
-      done: false
+      done: false,
     });
   });
 
   it("calls the callback on acknowledgement", () => {
-    const sourceGenerator = iterate(a => a * 2, 1);
+    const sourceGenerator = iterate((a) => a * 2, 1);
     const callback = jest.fn();
 
     const acknowledgableGenerator = acknowledgable(sourceGenerator, callback);
@@ -57,7 +57,7 @@ describe("sync.control.acknowledgable", () => {
   });
 
   it("propagates errors", () => {
-    const sourceGenerator = (function*() {
+    const sourceGenerator = (function* () {
       yield 5;
       throw new Error("Blub.");
     })();
@@ -66,11 +66,11 @@ describe("sync.control.acknowledgable", () => {
 
     expect(acknowledgableGenerator.next()).toStrictEqual({
       value: 5,
-      done: false
+      done: false,
     });
     expect(acknowledgableGenerator.next()).toStrictEqual({
       value: 5,
-      done: false
+      done: false,
     });
     expect(() => acknowledgableGenerator.next(true)).toThrow("Blub.");
   });

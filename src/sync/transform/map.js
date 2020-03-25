@@ -10,7 +10,7 @@ const curry = require("../../internal/curry");
  * @generator
  * @yields {any}
  */
-const map = function*(f, sourceGenerator) {
+const map = function* (f, sourceGenerator) {
   for (const value of sourceGenerator) {
     yield f(value);
   }

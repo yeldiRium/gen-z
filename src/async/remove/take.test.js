@@ -32,7 +32,7 @@ describe("async.remove.take", () => {
   });
 
   it("works with infinite generators", async () => {
-    const asyncSourceGenerator = (async function*() {
+    const asyncSourceGenerator = (async function* () {
       let i = 0;
       while (true) {
         yield i++;
@@ -57,7 +57,7 @@ describe("async.remove.take", () => {
   });
 
   it("propagates rejection", async () => {
-    const asyncSourceGenerator = (async function*() {
+    const asyncSourceGenerator = (async function* () {
       yield 2;
       throw new Error("Blub.");
     })();
@@ -68,7 +68,7 @@ describe("async.remove.take", () => {
   });
 
   it("does not propagate rejections occuring after more than n values", async () => {
-    const asyncSourceGenerator = (async function*() {
+    const asyncSourceGenerator = (async function* () {
       yield 2;
       yield 3;
       throw new Error("Blub.");

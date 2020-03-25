@@ -8,7 +8,7 @@ describe("async.remove.takeWhile", () => {
     const asyncSourceGenerator = from(range(10));
 
     const takenGenerator = takeWhile(
-      async elem => elem < 5,
+      async (elem) => elem < 5,
       asyncSourceGenerator
     );
 
@@ -17,7 +17,7 @@ describe("async.remove.takeWhile", () => {
   });
 
   it("works with infinite generators", async () => {
-    const asyncSourceGenerator = (async function*() {
+    const asyncSourceGenerator = (async function* () {
       let i = 0;
       while (true) {
         yield i++;
@@ -25,7 +25,7 @@ describe("async.remove.takeWhile", () => {
     })();
 
     const takenGenerator = takeWhile(
-      async elem => elem < 5,
+      async (elem) => elem < 5,
       asyncSourceGenerator
     );
 
@@ -36,7 +36,7 @@ describe("async.remove.takeWhile", () => {
   it("is curried", async () => {
     const asyncSourceGenerator = from(range(10));
 
-    const takeUnderFive = takeWhile(async elem => elem < 5);
+    const takeUnderFive = takeWhile(async (elem) => elem < 5);
 
     const takenGenerator = takeUnderFive(asyncSourceGenerator);
 
@@ -45,13 +45,13 @@ describe("async.remove.takeWhile", () => {
   });
 
   it("propagates rejections", async () => {
-    const asyncSourceGenerator = (async function*() {
+    const asyncSourceGenerator = (async function* () {
       yield 2;
       throw new Error("Blub.");
     })();
 
     const takenGenerator = takeWhile(
-      async elem => elem < 5,
+      async (elem) => elem < 5,
       asyncSourceGenerator
     );
 
@@ -59,14 +59,14 @@ describe("async.remove.takeWhile", () => {
   });
 
   it("does not propagate rejections occuring after values the predicate doesn't match", async () => {
-    const asyncSourceGenerator = (async function*() {
+    const asyncSourceGenerator = (async function* () {
       yield 2;
       yield 3;
       throw new Error("Blub.");
     })();
 
     const takenGenerator = takeWhile(
-      async elem => elem < 3,
+      async (elem) => elem < 3,
       asyncSourceGenerator
     );
 

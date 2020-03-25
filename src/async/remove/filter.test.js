@@ -8,7 +8,7 @@ describe("async.remove.filter", () => {
     const asyncSourceGenerator = from(range(10));
 
     const filteredGenerator = filter(
-      async elem => elem % 2 === 0,
+      async (elem) => elem % 2 === 0,
       asyncSourceGenerator
     );
 
@@ -19,7 +19,7 @@ describe("async.remove.filter", () => {
   it("is curried", async () => {
     const asyncSourceGenerator = from(range(10));
 
-    const filterEven = filter(elem => elem % 2 === 0);
+    const filterEven = filter((elem) => elem % 2 === 0);
 
     const filteredGenerator = filterEven(asyncSourceGenerator);
 
@@ -28,13 +28,13 @@ describe("async.remove.filter", () => {
   });
 
   it("propagates rejection", async () => {
-    const asyncSourceGenerator = (async function*() {
+    const asyncSourceGenerator = (async function* () {
       yield 2;
       throw new Error("Blub.");
     })();
 
     const filteredGenerator = filter(
-      async a => a % 2 === 0,
+      async (a) => a % 2 === 0,
       asyncSourceGenerator
     );
 

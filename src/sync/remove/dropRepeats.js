@@ -7,7 +7,7 @@
  * @generator
  * @yields {any}
  */
-const dropRepeats = function*(sourceGenerator) {
+const dropRepeats = function* (sourceGenerator) {
   // The start value must be something that cannot be equal to anything else.
   // A symbol is probably the best choice.
   let previous = Symbol("null");

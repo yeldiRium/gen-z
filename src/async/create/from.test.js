@@ -5,8 +5,8 @@ describe("async.create.from", () => {
   it("asynchronously yields the contents of an iterable, resolves promises", async () => {
     const input = [
       Promise.resolve(5),
-      new Promise(resolve => setTimeout(() => resolve(8), 20)),
-      10
+      new Promise((resolve) => setTimeout(() => resolve(8), 20)),
+      10,
     ];
 
     const sourceGenerator = from(input);
@@ -16,7 +16,7 @@ describe("async.create.from", () => {
   });
 
   it("works with other asynchronous generators", async () => {
-    const sourceGenerator = (async function*() {
+    const sourceGenerator = (async function* () {
       yield 5;
       yield 6;
       yield 7;
@@ -29,7 +29,7 @@ describe("async.create.from", () => {
   });
 
   it("works with synchronous generators", async () => {
-    const sourceGenerator = (function*() {
+    const sourceGenerator = (function* () {
       yield 5;
       yield 6;
       yield 7;

@@ -10,7 +10,7 @@
  * @generator
  * @yields {any}
  */
-const retryable = function*(sourceGenerator) {
+const retryable = function* (sourceGenerator) {
   for (const value of sourceGenerator) {
     let retry = true;
 

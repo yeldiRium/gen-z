@@ -12,7 +12,7 @@ const curry = require("../../internal/curry");
  * @generator
  * @yields {any}
  */
-const map = async function*(f, sourceGenerator) {
+const map = async function* (f, sourceGenerator) {
   for await (const value of sourceGenerator) {
     yield await f(value);
   }

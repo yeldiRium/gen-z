@@ -5,7 +5,7 @@ const range = require("../create/range");
 describe("sync.transform.chain", () => {
   it("applies a function to a generators values and concatenates resulting generators", () => {
     const sourceGenerator = range(5);
-    const f = a => range(a);
+    const f = (a) => range(a);
 
     const chainedGenerator = chain(f, sourceGenerator);
 
@@ -16,7 +16,7 @@ describe("sync.transform.chain", () => {
   it("passes through anything that's not a generator", () => {
     const sourceGenerator = range(5);
 
-    const chainedGenerator = chain(a => a, sourceGenerator);
+    const chainedGenerator = chain((a) => a, sourceGenerator);
 
     const result = collect(chainedGenerator);
     expect(result).toStrictEqual([0, 1, 2, 3, 4]);
@@ -25,7 +25,7 @@ describe("sync.transform.chain", () => {
   it("is curried", () => {
     const sourceGenerator = range(5);
 
-    const chainRange = chain(a => range(a));
+    const chainRange = chain((a) => range(a));
     const chainedGenerator = chainRange(sourceGenerator);
 
     const result = collect(chainedGenerator);
@@ -33,11 +33,11 @@ describe("sync.transform.chain", () => {
   });
 
   it("propagates errors", () => {
-    const sourceGenerator = (function*() {
+    const sourceGenerator = (function* () {
       yield 1;
       throw new Error("Blub.");
     })();
-    const f = a => range(a);
+    const f = (a) => range(a);
 
     const chainedGenerator = chain(f, sourceGenerator);
 

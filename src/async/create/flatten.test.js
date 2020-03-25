@@ -11,7 +11,7 @@ describe("async.create.flatten", () => {
       9,
       from([10]),
       [11],
-      [12, 13, 14][Symbol.iterator]()
+      [12, 13, 14][Symbol.iterator](),
     ]);
 
     const flattened = flatten(sourceGenerator);
@@ -31,7 +31,7 @@ describe("async.create.flatten", () => {
       [11],
       12,
       13,
-      14
+      14,
     ]);
   });
 });

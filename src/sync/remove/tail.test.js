@@ -22,7 +22,7 @@ describe("sync.remove.tail", () => {
   });
 
   it("yields nothing, if the generator yields nothing", () => {
-    const sourceGenerator = (function*() {})();
+    const sourceGenerator = (function* () {})();
 
     const droppedGenerator = tail(sourceGenerator);
 
@@ -31,7 +31,7 @@ describe("sync.remove.tail", () => {
   });
 
   it("propagates errors", () => {
-    const sourceGenerator = (function*() {
+    const sourceGenerator = (function* () {
       yield 0;
       throw new Error("Blub.");
     })();

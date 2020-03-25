@@ -17,8 +17,8 @@ describe("async.consume.forEach", () => {
   });
 
   it("passes the return value of the asynchronous callback to next", async () => {
-    const fn = jest.fn(async value => value);
-    const sourceGenerator = (async function*() {
+    const fn = jest.fn(async (value) => value);
+    const sourceGenerator = (async function* () {
       let value;
 
       for (let i = 0; i < 5; i++) {

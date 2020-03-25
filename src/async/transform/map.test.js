@@ -7,7 +7,7 @@ describe("async.transform.map", () => {
   it("maps the values yielded by an asynchronous generator", async () => {
     const asyncSourceGenerator = from(range(5));
 
-    const mappedGenerator = map(async a => a * 2, asyncSourceGenerator);
+    const mappedGenerator = map(async (a) => a * 2, asyncSourceGenerator);
 
     const result = await collect(mappedGenerator);
     expect(result).toStrictEqual([0, 2, 4, 6, 8]);
@@ -16,7 +16,7 @@ describe("async.transform.map", () => {
   it("is curried", async () => {
     const asyncSourceGenerator = from(range(5));
 
-    const doubleEach = map(async a => a * 2);
+    const doubleEach = map(async (a) => a * 2);
 
     const mappedGenerator = doubleEach(asyncSourceGenerator);
 
@@ -25,11 +25,11 @@ describe("async.transform.map", () => {
   });
 
   it("propagates rejections", async () => {
-    const asyncSourceGenerator = (async function*() {
+    const asyncSourceGenerator = (async function* () {
       yield 1;
       throw new Error("Blub.");
     })();
-    const f = async a => 2 * a;
+    const f = async (a) => 2 * a;
 
     const mappedGenerator = map(f, asyncSourceGenerator);
 

@@ -12,7 +12,7 @@ const curry = require("../../internal/curry");
  * @generator
  * @yields {any}
  */
-const concat = async function*(sourceGenerator1, sourceGenerator2) {
+const concat = async function* (sourceGenerator1, sourceGenerator2) {
   for await (const value of sourceGenerator1) {
     yield value;
   }

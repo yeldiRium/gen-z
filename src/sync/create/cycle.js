@@ -7,12 +7,12 @@
  * @generator
  * @yields {any}
  */
-const cycle = array => {
+const cycle = (array) => {
   if (array.length === 0) {
     throw new Error("Cannot cycle through empty array.");
   }
 
-  return (function*() {
+  return (function* () {
     let i = 0;
     while (true) {
       yield array[i];

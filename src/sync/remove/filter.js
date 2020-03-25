@@ -11,7 +11,7 @@ const curry = require("../../internal/curry");
  * @generator
  * @yields {any}
  */
-const filter = function*(predicate, sourceGenerator) {
+const filter = function* (predicate, sourceGenerator) {
   for (const value of sourceGenerator) {
     if (predicate(value)) {
       yield value;

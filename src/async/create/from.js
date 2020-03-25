@@ -9,7 +9,7 @@
  * @generator
  * @yields {any}
  */
-const from = async function*(iterable) {
+const from = async function* (iterable) {
   for await (const value of iterable) {
     yield await value;
   }

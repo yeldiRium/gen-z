@@ -13,7 +13,7 @@ describe("sync.remove.dropRepeats", () => {
   });
 
   it("propagates errors", () => {
-    const sourceGenerator = (function*() {
+    const sourceGenerator = (function* () {
       yield 2;
       throw new Error("Blub.");
     })();

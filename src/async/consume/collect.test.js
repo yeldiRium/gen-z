@@ -35,7 +35,7 @@ describe("async.consume.collect", () => {
 
   it("rejects if an async generator throws an error", async () => {
     // eslint-disable-next-line require-yield
-    const sourceGenerator = (async function*() {
+    const sourceGenerator = (async function* () {
       throw new Error("Blub.");
     })();
 

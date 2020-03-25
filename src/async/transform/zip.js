@@ -14,7 +14,7 @@ const curry = require("../../internal/curry");
  * @yields {any[]} - of the form [elem1, elem2] where elem1 is from
  *  sourceGenerator1 and elem2 ist from sourceGenerator2
  */
-const zip = async function*(sourceGenerator1, sourceGenerator2) {
+const zip = async function* (sourceGenerator1, sourceGenerator2) {
   while (true) {
     const next1 = await sourceGenerator1.next();
     const next2 = await sourceGenerator2.next();

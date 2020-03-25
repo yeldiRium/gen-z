@@ -12,7 +12,7 @@ const curry = require("../../internal/curry");
  * @generator
  * @yields {any}
  */
-const chain = async function*(f, sourceGenerator) {
+const chain = async function* (f, sourceGenerator) {
   for await (const value of sourceGenerator) {
     const next = await f(value);
 

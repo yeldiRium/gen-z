@@ -12,7 +12,7 @@ const curry = require("../../internal/curry");
  * @yields {any[]} - of the form [elem1, elem2] where elem1 is from
  *  sourceGenerator1 and elem2 ist from sourceGenerator2
  */
-const zip = function*(sourceGenerator1, sourceGenerator2) {
+const zip = function* (sourceGenerator1, sourceGenerator2) {
   while (true) {
     const next1 = sourceGenerator1.next();
     const next2 = sourceGenerator2.next();

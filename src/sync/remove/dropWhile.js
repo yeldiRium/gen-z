@@ -11,7 +11,7 @@ const curry = require("../../internal/curry");
  * @generator
  * @yields {any}
  */
-const dropWhile = function*(predicate, sourceGenerator) {
+const dropWhile = function* (predicate, sourceGenerator) {
   for (const value of sourceGenerator) {
     if (predicate(value)) {
       continue;

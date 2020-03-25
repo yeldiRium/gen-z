@@ -10,7 +10,7 @@ const curry = require("../../internal/curry");
  * @generator
  * @yields {any}
  */
-const iterate = function*(producer, start) {
+const iterate = function* (producer, start) {
   let i = start;
 
   while (true) {

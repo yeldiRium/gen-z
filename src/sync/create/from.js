@@ -7,7 +7,7 @@
  * @generator
  * @yields {any}
  */
-const from = function*(iterable) {
+const from = function* (iterable) {
   for (const value of iterable) {
     yield value;
   }

@@ -13,7 +13,7 @@ describe("async.remove.dropRepeats", () => {
   });
 
   it("propagates rejection", async () => {
-    const sourceGenerator = (async function*() {
+    const sourceGenerator = (async function* () {
       yield 2;
       throw new Error("Blub.");
     })();

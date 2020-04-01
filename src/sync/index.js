@@ -40,6 +40,8 @@ const some = require("./search/some");
 // Transform
 const chain = require("./transform/chain");
 const map = require("./transform/map");
+const zip = require("./transform/zip");
+
 module.exports = {
   collect,
   collectInArray,
@@ -72,5 +74,3 @@ module.exports = {
   map,
   zip,
 };
-
-const zip = require("./transform/zip");

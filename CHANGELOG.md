@@ -1,3 +1,10 @@
+## [2.2.3](https://github.com/yeldiRium/gen-z/compare/v2.2.2...v2.2.3) (2020-04-01)
+
+
+### Bug Fixes
+
+* Fix stupid ordering mistake that broke everything. ([8a53b98](https://github.com/yeldiRium/gen-z/commit/8a53b9847be132e9c7fe47c6ab1895d0883c3110))
+
 ## [2.2.2](https://github.com/yeldiRium/gen-z/compare/v2.2.1...v2.2.2) (2020-02-16)
 
 

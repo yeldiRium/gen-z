@@ -38,6 +38,6 @@
     "jest": "26.1.0",
     "jsdoc-to-markdown": "6.0.1",
     "prettier": "2.0.5",
-    "semantic-release": "17.0.8"
+    "semantic-release": "17.1.1"
   }
 }

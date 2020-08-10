@@ -1,3 +1,10 @@
+## [2.2.4](https://github.com/yeldiRium/gen-z/compare/v2.2.3...v2.2.4) (2020-08-10)
+
+
+### Bug Fixes
+
+* Update transitive dependencies. ([d40413d](https://github.com/yeldiRium/gen-z/commit/d40413d10d0fb54bcc61689a33de251cdd363944))
+
 ## [2.2.3](https://github.com/yeldiRium/gen-z/compare/v2.2.2...v2.2.3) (2020-04-01)
 
 

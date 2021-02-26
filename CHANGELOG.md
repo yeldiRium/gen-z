@@ -1,3 +1,10 @@
+## [2.2.5](https://github.com/yeldiRium/gen-z/compare/v2.2.4...v2.2.5) (2021-02-26)
+
+
+### Bug Fixes
+
+* Mark as unmaintained; Disable dependabot. ([0400d84](https://github.com/yeldiRium/gen-z/commit/0400d848b9eb1c5379da719229d40219040b2317))
+
 ## [2.2.4](https://github.com/yeldiRium/gen-z/compare/v2.2.3...v2.2.4) (2020-08-10)
 
 

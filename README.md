@@ -1,5 +1,7 @@
 # Gen-z
 
+UNMAINTAINED - Since I don't use it and it's still JS, not TS, I'm not going to maintain this any longer.
+
 Next generation (lol) generator helpers.
 
 Think any utility library (ramda, lodash) but for generators.
